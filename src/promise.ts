@@ -1,3 +1,6 @@
+export const sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 export const defer = <T, F extends (...args: never[]) => Promise<T>>(
   callback: F
 ): ((...args: Parameters<F>) => Promise<T>) => {

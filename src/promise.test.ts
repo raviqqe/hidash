@@ -1,5 +1,9 @@
 import { expect, it } from "vitest";
-import { defer } from "./defer.js";
+import { sleep, defer } from "./promise.js";
+
+it("sleeps", async () => {
+  await sleep(0);
+});
 
 it("defers a value", async () => {
   const callback = defer(async (x: number) => x);
