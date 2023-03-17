@@ -23,3 +23,13 @@ export const asyncArray = async <T>(iterable: AsyncIterable<T>): Promise<T[]> =>
 
   return values
 }
+
+export const asyncChunkArray = async <T>(iterable: AsyncIterable<T[]>): Promise<T[]> => {
+  const values: T[] = [];
+
+  for await (const values of iterable) {
+    values.push(...values)
+  }
+
+  return values
+}
