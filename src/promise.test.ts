@@ -1,5 +1,5 @@
-import { expect, it } from "vitest";
-import { sleep, defer, asyncArray } from "./promise.js";
+import { describe, expect, it } from "vitest";
+import { sleep, defer, asyncArray, asyncChunkArray } from "./promise.js";
 
 it("sleeps", async () => {
   await sleep(0);
@@ -14,6 +14,15 @@ it("defers a value", async () => {
   expect(await callback(4)).toBe(3);
 });
 
-it('converts an async iterable into an array', async () => {
-  expect(asyncArray((async function*() { })())).toEqual([])
+describe(asyncArray.name, () => {
+  it('converts an async iterable into an array', async () => {
+    expect(asyncArray((async function*() { })())).toEqual([])
+  })
+})
+
+
+describe(asyncChunkArray.name, () => {
+  it('converts an empty iterable', async () => {
+    expect(asyncChunkArray((async function*() { })())).toEqual([])
+  })
 })
