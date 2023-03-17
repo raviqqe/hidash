@@ -15,8 +15,12 @@ it("defers a value", async () => {
 });
 
 describe(asyncArray.name, () => {
-  it('converts an async iterable into an array', async () => {
+  it('converts an empty iterable', async () => {
     expect(asyncArray((async function*() { })())).toEqual([])
+  })
+
+  it('converts an iterable with an element', async () => {
+    expect(asyncArray((async function*() { yield 1 })())).toEqual([1])
   })
 })
 
@@ -24,5 +28,9 @@ describe(asyncArray.name, () => {
 describe(asyncChunkArray.name, () => {
   it('converts an empty iterable', async () => {
     expect(asyncChunkArray((async function*() { })())).toEqual([])
+  })
+
+  it('converts an iterable with an element', async () => {
+    expect(asyncArray((async function*() { yield [1] })())).toEqual([1])
   })
 })
