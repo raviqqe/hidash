@@ -1,0 +1,23 @@
+{
+  "name": "@raviqqe/parsdown",
+  "version": "1.3.4",
+  "description": "Parser combinator in TypeScript",
+  "repository": "https://github.com/raviqqe/parsdown",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.ts'",
+    "test": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@raviqqe/eslint-config": "^1.0.22",
+    "@raviqqe/tsconfig": "^1.0.1",
+    "@vitest/coverage-c8": "^0.29.2",
+    "eslint": "^8.34.0",
+    "type-fest": "^3.6.0",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.2"
+  }
+}
