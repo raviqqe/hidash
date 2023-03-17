@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@raviqqe/hidash?style=flat-square)](https://www.npmjs.com/package/@raviqqe/hidash)
 [![License](https://img.shields.io/github/license/raviqqe/hidash.svg?style=flat-square)](LICENSE)
 
-A utility library built as an extension of [Lodash]().
+Yet another extension to [Lodash](https://lodash.com/).
 
 ## License
 
