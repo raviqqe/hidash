@@ -16,21 +16,36 @@ it("defers a value", async () => {
 
 describe(asyncArray.name, () => {
   it('converts an empty iterable', async () => {
-    expect(asyncArray((async function*() { })())).toEqual([])
+    expect(await asyncArray((async function*() { })())).toEqual([])
   })
 
   it('converts an iterable with an element', async () => {
-    expect(asyncArray((async function*() { yield 1 })())).toEqual([1])
+    expect(await asyncArray((async function*() { yield 1 })())).toEqual([1])
+  })
+
+  it('converts an iterable with two elements', async () => {
+    expect(await asyncArray((async function*() {
+      yield 1;
+      yield 2;
+    })())).toEqual([1, 2])
   })
 })
 
 
 describe(asyncChunkArray.name, () => {
   it('converts an empty iterable', async () => {
-    expect(asyncChunkArray((async function*() { })())).toEqual([])
+    expect(await asyncChunkArray((async function*() { })())).toEqual([])
   })
 
   it('converts an iterable with an element', async () => {
-    expect(asyncArray((async function*() { yield [1] })())).toEqual([1])
+    expect(await asyncChunkArray((async function*() {
+      yield [1];
+    })())).toEqual([1])
+  })
+
+  it('converts an iterable with two elements', async () => {
+    expect(await asyncChunkArray((async function*() {
+      yield [1, 2];
+    })())).toEqual([1, 2])
   })
 })
