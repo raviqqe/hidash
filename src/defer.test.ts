@@ -1,4 +1,4 @@
-import { expect, it } from "vitest"
+import { expect, it } from "vitest";
 import { defer } from "./defer.js";
 
 it("defers a value", async () => {

@@ -1,4 +1,4 @@
-import { expect, it } from "vitest"
+import { expect, it } from "vitest";
 import { capitalizeText, isAlphabetic } from "./string.js";
 
 it("detects if a string is alphabetic", () => {
@@ -20,4 +20,3 @@ it("capitalizes a text into a sentence case", () => {
   expect(capitalizeText("aa")).toBe("Aa");
   expect(capitalizeText("a b")).toBe("A b");
 });
-
