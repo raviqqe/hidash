@@ -13,3 +13,13 @@ export const defer = <T, F extends (...args: never[]) => Promise<T>>(
     return lastCache ?? cache;
   };
 };
+
+export const asyncArray = async <T>(iterable: AsyncIterable<T>): Promise<T[]> => {
+  const values: T[] = [];
+
+  for await (const value of iterable) {
+    values.push(value)
+  }
+
+  return values
+}
