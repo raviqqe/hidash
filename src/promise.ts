@@ -19,8 +19,8 @@ export const asyncArray = async <T>(
 ): Promise<T[]> => {
   const values: T[] = [];
 
-  for await (const value of iterable) {
-    values.push(value);
+  for await (const x of iterable) {
+    values.push(x);
   }
 
   return values;
@@ -31,8 +31,8 @@ export const asyncChunkArray = async <T>(
 ): Promise<T[]> => {
   const values: T[] = [];
 
-  for await (const values of iterable) {
-    values.push(...values);
+  for await (const xs of iterable) {
+    values.push(...xs);
   }
 
   return values;
