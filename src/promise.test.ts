@@ -65,4 +65,15 @@ describe(asyncChunkArray.name, () => {
       )
     ).toEqual([1, 2]);
   });
+
+  it("converts an iterable with two elements in different chunks", async () => {
+    expect(
+      await asyncChunkArray(
+        (async function* () {
+          yield [1];
+          yield [2];
+        })()
+      )
+    ).toEqual([1, 2]);
+  });
 });
