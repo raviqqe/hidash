@@ -14,22 +14,26 @@ export const defer = <T, F extends (...args: never[]) => Promise<T>>(
   };
 };
 
-export const asyncArray = async <T>(iterable: AsyncIterable<T>): Promise<T[]> => {
+export const asyncArray = async <T>(
+  iterable: AsyncIterable<T>
+): Promise<T[]> => {
   const values: T[] = [];
 
   for await (const value of iterable) {
-    values.push(value)
+    values.push(value);
   }
 
-  return values
-}
+  return values;
+};
 
-export const asyncChunkArray = async <T>(iterable: AsyncIterable<T[]>): Promise<T[]> => {
+export const asyncChunkArray = async <T>(
+  iterable: AsyncIterable<T[]>
+): Promise<T[]> => {
   const values: T[] = [];
 
   for await (const values of iterable) {
-    values.push(...values)
+    values.push(...values);
   }
 
-  return values
-}
+  return values;
+};
