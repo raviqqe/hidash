@@ -209,8 +209,12 @@ describe(asyncFilter.name, () => {
       yield 1;
     };
 
-    expect(await asyncArray(asyncFilter(createIterable(), (x) => x > 1))).toEqual([]);
-    expect(await asyncArray(asyncFilter(createIterable(), (x) => x <= 1))).toEqual([1]);
+    expect(
+      await asyncArray(asyncFilter(createIterable(), (x) => x > 1))
+    ).toEqual([]);
+    expect(
+      await asyncArray(asyncFilter(createIterable(), (x) => x <= 1))
+    ).toEqual([1]);
   });
 
   it("slices an iterable with two elements", async () => {
@@ -219,7 +223,11 @@ describe(asyncFilter.name, () => {
       yield 2;
     };
 
-    expect(await asyncArray(asyncFilter(createIterable(), (x) => x < 2))).toEqual([1]);
-    expect(await asyncArray(asyncFilter(createIterable(), (x) => x > 1))).toEqual([2]);
+    expect(
+      await asyncArray(asyncFilter(createIterable(), (x) => x < 2))
+    ).toEqual([1]);
+    expect(
+      await asyncArray(asyncFilter(createIterable(), (x) => x > 1))
+    ).toEqual([2]);
   });
 });
