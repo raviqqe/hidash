@@ -6,6 +6,7 @@ import {
   asyncChunkArray,
   asyncSlice,
   asyncChunkSlice,
+  asyncFilter,
 } from "./promise.js";
 
 it("sleeps", async () => {
@@ -193,5 +194,32 @@ describe(asyncChunkSlice.name, () => {
     expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
       [2],
     ]);
+  });
+});
+
+describe(asyncFilter.name, () => {
+  it("slices an empty iterable", async () => {
+    expect(
+      await asyncArray(asyncFilter((async function* () {})(), () => true))
+    ).toEqual([]);
+  });
+
+  it("slices an iterable with an element", async () => {
+    const createIterable = async function* () {
+      yield 1;
+    };
+
+    expect(await asyncArray(asyncFilter(createIterable(), (x) => x > 1))).toEqual([]);
+    expect(await asyncArray(asyncFilter(createIterable(), (x) => x <= 1))).toEqual([1]);
+  });
+
+  it("slices an iterable with two elements", async () => {
+    const createIterable = async function* () {
+      yield 1;
+      yield 2;
+    };
+
+    expect(await asyncArray(asyncFilter(createIterable(), (x) => x < 2))).toEqual([1]);
+    expect(await asyncArray(asyncFilter(createIterable(), (x) => x > 1))).toEqual([2]);
   });
 });
