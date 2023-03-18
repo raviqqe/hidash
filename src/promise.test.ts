@@ -170,7 +170,7 @@ describe(asyncChunkSlice.name, () => {
     );
   });
 
-  it("slices an iterable with two elementsin a chunk", async () => {
+  it("slices an iterable with two elements in a chunk", async () => {
     const createIterable = async function* () {
       yield [1, 2];
     };
