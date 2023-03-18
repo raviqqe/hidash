@@ -47,13 +47,13 @@ export const asyncSlice = async function* <T>(
 
   for await (const x of iterable) {
     if (count >= end) {
-      return
+      return;
     } else if (count >= start) {
-      yield x
-      count++
+      yield x;
+      count++;
     }
   }
-}
+};
 
 export const asyncChunkSlice = async function* <T>(
   start: number,
@@ -64,10 +64,10 @@ export const asyncChunkSlice = async function* <T>(
 
   for await (const xs of iterable) {
     if (count >= end) {
-      return
+      return;
     } else if (count >= start) {
       yield xs.slice(0, end - count);
       count += xs.length;
     }
   }
-}
+};

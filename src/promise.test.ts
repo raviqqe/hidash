@@ -16,13 +16,13 @@ it("defers a value", async () => {
 
 describe(asyncArray.name, () => {
   it("converts an empty iterable", async () => {
-    expect(await asyncArray((async function*() { })())).toEqual([]);
+    expect(await asyncArray((async function* () {})())).toEqual([]);
   });
 
   it("converts an iterable with an element", async () => {
     expect(
       await asyncArray(
-        (async function*() {
+        (async function* () {
           yield 1;
         })()
       )
@@ -32,7 +32,7 @@ describe(asyncArray.name, () => {
   it("converts an iterable with two elements", async () => {
     expect(
       await asyncArray(
-        (async function*() {
+        (async function* () {
           yield 1;
           yield 2;
         })()
@@ -43,13 +43,13 @@ describe(asyncArray.name, () => {
 
 describe(asyncChunkArray.name, () => {
   it("converts an empty iterable", async () => {
-    expect(await asyncChunkArray((async function*() { })())).toEqual([]);
+    expect(await asyncChunkArray((async function* () {})())).toEqual([]);
   });
 
   it("converts an iterable with an element", async () => {
     expect(
       await asyncChunkArray(
-        (async function*() {
+        (async function* () {
           yield [1];
         })()
       )
@@ -59,7 +59,7 @@ describe(asyncChunkArray.name, () => {
   it("converts an iterable with two elements", async () => {
     expect(
       await asyncChunkArray(
-        (async function*() {
+        (async function* () {
           yield [1, 2];
         })()
       )
@@ -69,7 +69,7 @@ describe(asyncChunkArray.name, () => {
   it("converts an iterable with two elements in different chunks", async () => {
     expect(
       await asyncChunkArray(
-        (async function*() {
+        (async function* () {
           yield [1];
           yield [2];
         })()
