@@ -23,13 +23,13 @@ it("defers a value", async () => {
 
 describe(asyncArray.name, () => {
   it("converts an empty iterable", async () => {
-    expect(await asyncArray((async function* () {})())).toEqual([]);
+    expect(await asyncArray((async function*() { })())).toEqual([]);
   });
 
   it("converts an iterable with an element", async () => {
     expect(
       await asyncArray(
-        (async function* () {
+        (async function*() {
           yield 1;
         })()
       )
@@ -39,7 +39,7 @@ describe(asyncArray.name, () => {
   it("converts an iterable with two elements", async () => {
     expect(
       await asyncArray(
-        (async function* () {
+        (async function*() {
           yield 1;
           yield 2;
         })()
@@ -50,13 +50,13 @@ describe(asyncArray.name, () => {
 
 describe(asyncChunkArray.name, () => {
   it("converts an empty iterable", async () => {
-    expect(await asyncChunkArray((async function* () {})())).toEqual([]);
+    expect(await asyncChunkArray((async function*() { })())).toEqual([]);
   });
 
   it("converts an iterable with an element", async () => {
     expect(
       await asyncChunkArray(
-        (async function* () {
+        (async function*() {
           yield [1];
         })()
       )
@@ -66,7 +66,7 @@ describe(asyncChunkArray.name, () => {
   it("converts an iterable with two elements", async () => {
     expect(
       await asyncChunkArray(
-        (async function* () {
+        (async function*() {
           yield [1, 2];
         })()
       )
@@ -76,7 +76,7 @@ describe(asyncChunkArray.name, () => {
   it("converts an iterable with two elements in different chunks", async () => {
     expect(
       await asyncChunkArray(
-        (async function* () {
+        (async function*() {
           yield [1];
           yield [2];
         })()
@@ -85,15 +85,66 @@ describe(asyncChunkArray.name, () => {
   });
 });
 
-describe(asyncChunkSlice.name, () => {
+describe(asyncSlice.name, () => {
   it("slices an empty iterable", async () => {
     expect(
-      await asyncArray(asyncChunkSlice((async function* () {})(), 0, 0))
+      await asyncArray(asyncSlice((async function*() { })(), 0, 0))
     ).toEqual([]);
   });
 
   it("slices an iterable with an element", async () => {
-    const createIterable = async function* () {
+    const createIterable = async function*() {
+      yield 1;
+    };
+
+    expect(await asyncArray(asyncSlice(createIterable(), 0, 0))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncSlice(createIterable(), 0, 1))).toEqual([
+      1,
+    ]);
+    expect(await asyncArray(asyncSlice(createIterable(), 1, 1))).toEqual(
+      []
+    );
+  });
+
+  it("slices an iterable with two elements", async () => {
+    const createIterable = async function*() {
+      yield 1;
+      yield 2;
+    };
+
+    expect(await asyncArray(asyncSlice(createIterable(), 0, 0))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncSlice(createIterable(), 0, 1))).toEqual([
+      1,
+    ]);
+    expect(await asyncArray(asyncSlice(createIterable(), 0, 2))).toEqual([
+      1,
+      2,
+    ]);
+    expect(await asyncArray(asyncSlice(createIterable(), 1, 1))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncSlice(createIterable(), 1, 2))).toEqual([
+      2,
+    ]);
+    expect(await asyncArray(asyncSlice(createIterable(), 2, 2))).toEqual(
+      []
+    );
+  });
+});
+
+describe(asyncChunkSlice.name, () => {
+  it("slices an empty iterable", async () => {
+    expect(
+      await asyncArray(asyncChunkSlice((async function*() { })(), 0, 0))
+    ).toEqual([]);
+  });
+
+  it("slices an iterable with an element", async () => {
+    const createIterable = async function*() {
       yield [1];
     };
 
@@ -109,7 +160,7 @@ describe(asyncChunkSlice.name, () => {
   });
 
   it("slices an iterable with two elements", async () => {
-    const createIterable = async function* () {
+    const createIterable = async function*() {
       yield [1];
       yield [2];
     };
@@ -136,7 +187,7 @@ describe(asyncChunkSlice.name, () => {
   });
 
   it("slices an iterable with two elementsin a chunk", async () => {
-    const createIterable = async function* () {
+    const createIterable = async function*() {
       yield [1, 2];
     };
 
@@ -152,7 +203,7 @@ describe(asyncChunkSlice.name, () => {
   });
 
   it("slices an iterable within a chunk", async () => {
-    const createIterable = async function* () {
+    const createIterable = async function*() {
       yield [1, 2, 3];
     };
 
