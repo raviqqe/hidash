@@ -14,9 +14,7 @@ export const defer = <T, F extends (...args: never[]) => Promise<T>>(
   };
 };
 
-export const asyncArray = async <T>(
-  iterable: AsyncIterable<T>
-): Promise<T[]> => {
+export const toArray = async <T>(iterable: AsyncIterable<T>): Promise<T[]> => {
   const values: T[] = [];
 
   for await (const x of iterable) {
@@ -26,7 +24,7 @@ export const asyncArray = async <T>(
   return values;
 };
 
-export const asyncChunkArray = async <T>(
+export const toFlatArray = async <T>(
   iterable: AsyncIterable<T[]>
 ): Promise<T[]> => {
   const values: T[] = [];
@@ -38,7 +36,7 @@ export const asyncChunkArray = async <T>(
   return values;
 };
 
-export const asyncSlice = async function* <T>(
+export const slice = async function* <T>(
   iterable: AsyncIterable<T>,
   start: number,
   end: number
@@ -56,12 +54,12 @@ export const asyncSlice = async function* <T>(
   }
 };
 
-export const asyncChunkSlice = <T>(
+export const flatSlice = <T>(
   iterable: AsyncIterable<T[]>,
   start: number,
   end: number
 ): AsyncIterable<T[]> =>
-  asyncFilter(
+  filter(
     (async function* () {
       let count = 0;
 
@@ -78,7 +76,7 @@ export const asyncChunkSlice = <T>(
     (xs) => !!xs.length
   );
 
-export const asyncFilter = async function* <T>(
+export const filter = async function* <T>(
   iterable: AsyncIterable<T>,
   check: (x: T) => boolean
 ): AsyncIterable<T> {
