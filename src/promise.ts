@@ -37,3 +37,54 @@ export const asyncChunkArray = async <T>(
 
   return values;
 };
+
+export const asyncSlice = async function* <T>(
+  iterable: AsyncIterable<T>,
+  start: number,
+  end: number
+): AsyncIterable<T> {
+  let count = 0;
+
+  for await (const x of iterable) {
+    if (count >= end) {
+      return;
+    } else if (count >= start) {
+      yield x;
+    }
+
+    count++;
+  }
+};
+
+export const asyncChunkSlice = <T>(
+  iterable: AsyncIterable<T[]>,
+  start: number,
+  end: number
+): AsyncIterable<T[]> =>
+  asyncFilter(
+    (async function* () {
+      let count = 0;
+
+      for await (const xs of iterable) {
+        if (count >= end) {
+          return;
+        } else if (xs.length + count >= start) {
+          yield xs.slice(start - count, end - count);
+        }
+
+        count += xs.length;
+      }
+    })(),
+    (xs) => !!xs.length
+  );
+
+export const asyncFilter = async function* <T>(
+  iterable: AsyncIterable<T>,
+  check: (x: T) => boolean
+): AsyncIterable<T> {
+  for await (const x of iterable) {
+    if (check(x)) {
+      yield x;
+    }
+  }
+};
