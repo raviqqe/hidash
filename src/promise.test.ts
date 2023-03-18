@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 import {
   sleep,
   defer,
-  asyncArray,
-  asyncChunkArray,
-  asyncSlice,
-  asyncChunkSlice,
-  asyncFilter,
+  toArray,
+  toFlatArray,
+  slice,
+  flatSlice,
+  filter,
 } from "./promise.js";
 
 it("sleeps", async () => {
@@ -22,14 +22,14 @@ it("defers a value", async () => {
   expect(await callback(4)).toBe(3);
 });
 
-describe(asyncArray.name, () => {
+describe(toArray.name, () => {
   it("converts an empty iterable", async () => {
-    expect(await asyncArray((async function* () {})())).toEqual([]);
+    expect(await toArray((async function* () {})())).toEqual([]);
   });
 
   it("converts an iterable with an element", async () => {
     expect(
-      await asyncArray(
+      await toArray(
         (async function* () {
           yield 1;
         })()
@@ -39,7 +39,7 @@ describe(asyncArray.name, () => {
 
   it("converts an iterable with two elements", async () => {
     expect(
-      await asyncArray(
+      await toArray(
         (async function* () {
           yield 1;
           yield 2;
@@ -49,14 +49,14 @@ describe(asyncArray.name, () => {
   });
 });
 
-describe(asyncChunkArray.name, () => {
+describe(toFlatArray.name, () => {
   it("converts an empty iterable", async () => {
-    expect(await asyncChunkArray((async function* () {})())).toEqual([]);
+    expect(await toFlatArray((async function* () {})())).toEqual([]);
   });
 
   it("converts an iterable with an element", async () => {
     expect(
-      await asyncChunkArray(
+      await toFlatArray(
         (async function* () {
           yield [1];
         })()
@@ -66,7 +66,7 @@ describe(asyncChunkArray.name, () => {
 
   it("converts an iterable with two elements", async () => {
     expect(
-      await asyncChunkArray(
+      await toFlatArray(
         (async function* () {
           yield [1, 2];
         })()
@@ -76,7 +76,7 @@ describe(asyncChunkArray.name, () => {
 
   it("converts an iterable with two elements in different chunks", async () => {
     expect(
-      await asyncChunkArray(
+      await toFlatArray(
         (async function* () {
           yield [1];
           yield [2];
@@ -86,10 +86,10 @@ describe(asyncChunkArray.name, () => {
   });
 });
 
-describe(asyncSlice.name, () => {
+describe(slice.name, () => {
   it("slices an empty iterable", async () => {
     expect(
-      await asyncArray(asyncSlice((async function* () {})(), 0, 0))
+      await toArray(slice((async function* () {})(), 0, 0))
     ).toEqual([]);
   });
 
@@ -98,9 +98,9 @@ describe(asyncSlice.name, () => {
       yield 1;
     };
 
-    expect(await asyncArray(asyncSlice(createIterable(), 0, 0))).toEqual([]);
-    expect(await asyncArray(asyncSlice(createIterable(), 0, 1))).toEqual([1]);
-    expect(await asyncArray(asyncSlice(createIterable(), 1, 1))).toEqual([]);
+    expect(await toArray(slice(createIterable(), 0, 0))).toEqual([]);
+    expect(await toArray(slice(createIterable(), 0, 1))).toEqual([1]);
+    expect(await toArray(slice(createIterable(), 1, 1))).toEqual([]);
   });
 
   it("slices an iterable with two elements", async () => {
@@ -109,21 +109,21 @@ describe(asyncSlice.name, () => {
       yield 2;
     };
 
-    expect(await asyncArray(asyncSlice(createIterable(), 0, 0))).toEqual([]);
-    expect(await asyncArray(asyncSlice(createIterable(), 0, 1))).toEqual([1]);
-    expect(await asyncArray(asyncSlice(createIterable(), 0, 2))).toEqual([
+    expect(await toArray(slice(createIterable(), 0, 0))).toEqual([]);
+    expect(await toArray(slice(createIterable(), 0, 1))).toEqual([1]);
+    expect(await toArray(slice(createIterable(), 0, 2))).toEqual([
       1, 2,
     ]);
-    expect(await asyncArray(asyncSlice(createIterable(), 1, 1))).toEqual([]);
-    expect(await asyncArray(asyncSlice(createIterable(), 1, 2))).toEqual([2]);
-    expect(await asyncArray(asyncSlice(createIterable(), 2, 2))).toEqual([]);
+    expect(await toArray(slice(createIterable(), 1, 1))).toEqual([]);
+    expect(await toArray(slice(createIterable(), 1, 2))).toEqual([2]);
+    expect(await toArray(slice(createIterable(), 2, 2))).toEqual([]);
   });
 });
 
-describe(asyncChunkSlice.name, () => {
+describe(flatSlice.name, () => {
   it("slices an empty iterable", async () => {
     expect(
-      await asyncArray(asyncChunkSlice((async function* () {})(), 0, 0))
+      await toArray(flatSlice((async function* () {})(), 0, 0))
     ).toEqual([]);
   });
 
@@ -132,13 +132,13 @@ describe(asyncChunkSlice.name, () => {
       yield [1];
     };
 
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 0))).toEqual(
+    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual(
       []
     );
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 1))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([
       [1],
     ]);
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 1))).toEqual(
+    expect(await toArray(flatSlice(createIterable(), 1, 1))).toEqual(
       []
     );
   });
@@ -149,23 +149,23 @@ describe(asyncChunkSlice.name, () => {
       yield [2];
     };
 
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 0))).toEqual(
+    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual(
       []
     );
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 1))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([
       [1],
     ]);
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 2))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 0, 2))).toEqual([
       [1],
       [2],
     ]);
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 1))).toEqual(
+    expect(await toArray(flatSlice(createIterable(), 1, 1))).toEqual(
       []
     );
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([
       [2],
     ]);
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 2, 2))).toEqual(
+    expect(await toArray(flatSlice(createIterable(), 2, 2))).toEqual(
       []
     );
   });
@@ -175,13 +175,13 @@ describe(asyncChunkSlice.name, () => {
       yield [1, 2];
     };
 
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 0))).toEqual(
+    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual(
       []
     );
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 1))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([
       [1],
     ]);
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([
       [2],
     ]);
   });
@@ -191,16 +191,16 @@ describe(asyncChunkSlice.name, () => {
       yield [1, 2, 3];
     };
 
-    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
+    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([
       [2],
     ]);
   });
 });
 
-describe(asyncFilter.name, () => {
+describe(filter.name, () => {
   it("slices an empty iterable", async () => {
     expect(
-      await asyncArray(asyncFilter((async function* () {})(), () => true))
+      await toArray(filter((async function* () {})(), () => true))
     ).toEqual([]);
   });
 
@@ -210,10 +210,10 @@ describe(asyncFilter.name, () => {
     };
 
     expect(
-      await asyncArray(asyncFilter(createIterable(), (x) => x > 1))
+      await toArray(filter(createIterable(), (x) => x > 1))
     ).toEqual([]);
     expect(
-      await asyncArray(asyncFilter(createIterable(), (x) => x <= 1))
+      await toArray(filter(createIterable(), (x) => x <= 1))
     ).toEqual([1]);
   });
 
@@ -224,10 +224,10 @@ describe(asyncFilter.name, () => {
     };
 
     expect(
-      await asyncArray(asyncFilter(createIterable(), (x) => x < 2))
+      await toArray(filter(createIterable(), (x) => x < 2))
     ).toEqual([1]);
     expect(
-      await asyncArray(asyncFilter(createIterable(), (x) => x > 1))
+      await toArray(filter(createIterable(), (x) => x > 1))
     ).toEqual([2]);
   });
 });
