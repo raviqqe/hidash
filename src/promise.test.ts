@@ -5,6 +5,7 @@ import {
   asyncArray,
   asyncChunkArray,
   asyncSlice,
+  asyncChunkSlice,
 } from "./promise.js";
 
 it("sleeps", async () => {
@@ -84,36 +85,79 @@ describe(asyncChunkArray.name, () => {
   });
 });
 
-describe(asyncSlice.name, () => {
+describe(asyncChunkSlice.name, () => {
   it("slices an empty iterable", async () => {
     expect(
-      await asyncArray(asyncSlice(0, 0, (async function* () {})()))
+      await asyncArray(asyncChunkSlice((async function* () {})(), 0, 0))
     ).toEqual([]);
   });
 
-  it("slices a iterable with an element", async () => {
+  it("slices an iterable with an element", async () => {
     const createIterable = async function* () {
-      yield 1;
+      yield [1];
     };
 
-    expect(await asyncArray(asyncSlice(0, 0, createIterable()))).toEqual([]);
-    expect(await asyncArray(asyncSlice(0, 1, createIterable()))).toEqual([1]);
-    expect(await asyncArray(asyncSlice(1, 1, createIterable()))).toEqual([]);
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 0))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 1))).toEqual([
+      [1],
+    ]);
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 1))).toEqual(
+      []
+    );
   });
 
-  it("slices a iterable with two elements", async () => {
-    const createIterable = async function*() {
-      yield 1;
-      yield 2;
+  it("slices an iterable with two elements", async () => {
+    const createIterable = async function* () {
+      yield [1];
+      yield [2];
     };
 
-    expect(await asyncArray(asyncSlice(0, 0, createIterable()))).toEqual([]);
-    expect(await asyncArray(asyncSlice(0, 1, createIterable()))).toEqual([1]);
-    expect(await asyncArray(asyncSlice(0, 2, createIterable()))).toEqual([
-      1, 2,
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 0))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 1))).toEqual([
+      [1],
     ]);
-    expect(await asyncArray(asyncSlice(1, 1, createIterable()))).toEqual([]);
-    expect(await asyncArray(asyncSlice(1, 2, createIterable()))).toEqual([2]);
-    expect(await asyncArray(asyncSlice(2, 2, createIterable()))).toEqual([]);
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 2))).toEqual([
+      [1],
+      [2],
+    ]);
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 1))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
+      [2],
+    ]);
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 2, 2))).toEqual(
+      []
+    );
+  });
+
+  it("slices an iterable with two elementsin a chunk", async () => {
+    const createIterable = async function* () {
+      yield [1, 2];
+    };
+
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 0))).toEqual(
+      []
+    );
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 0, 1))).toEqual([
+      [1],
+    ]);
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
+      [2],
+    ]);
+  });
+
+  it("slices an iterable within a chunk", async () => {
+    const createIterable = async function* () {
+      yield [1, 2, 3];
+    };
+
+    expect(await asyncArray(asyncChunkSlice(createIterable(), 1, 2))).toEqual([
+      [2],
+    ]);
   });
 });
