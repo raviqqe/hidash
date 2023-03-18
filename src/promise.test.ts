@@ -88,9 +88,7 @@ describe(toFlatArray.name, () => {
 
 describe(slice.name, () => {
   it("slices an empty iterable", async () => {
-    expect(
-      await toArray(slice((async function* () {})(), 0, 0))
-    ).toEqual([]);
+    expect(await toArray(slice((async function* () {})(), 0, 0))).toEqual([]);
   });
 
   it("slices an iterable with an element", async () => {
@@ -111,9 +109,7 @@ describe(slice.name, () => {
 
     expect(await toArray(slice(createIterable(), 0, 0))).toEqual([]);
     expect(await toArray(slice(createIterable(), 0, 1))).toEqual([1]);
-    expect(await toArray(slice(createIterable(), 0, 2))).toEqual([
-      1, 2,
-    ]);
+    expect(await toArray(slice(createIterable(), 0, 2))).toEqual([1, 2]);
     expect(await toArray(slice(createIterable(), 1, 1))).toEqual([]);
     expect(await toArray(slice(createIterable(), 1, 2))).toEqual([2]);
     expect(await toArray(slice(createIterable(), 2, 2))).toEqual([]);
@@ -122,9 +118,9 @@ describe(slice.name, () => {
 
 describe(flatSlice.name, () => {
   it("slices an empty iterable", async () => {
-    expect(
-      await toArray(flatSlice((async function* () {})(), 0, 0))
-    ).toEqual([]);
+    expect(await toArray(flatSlice((async function* () {})(), 0, 0))).toEqual(
+      []
+    );
   });
 
   it("slices an iterable with an element", async () => {
@@ -132,15 +128,9 @@ describe(flatSlice.name, () => {
       yield [1];
     };
 
-    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual(
-      []
-    );
-    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([
-      [1],
-    ]);
-    expect(await toArray(flatSlice(createIterable(), 1, 1))).toEqual(
-      []
-    );
+    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual([]);
+    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([[1]]);
+    expect(await toArray(flatSlice(createIterable(), 1, 1))).toEqual([]);
   });
 
   it("slices an iterable with two elements", async () => {
@@ -149,25 +139,15 @@ describe(flatSlice.name, () => {
       yield [2];
     };
 
-    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual(
-      []
-    );
-    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([
-      [1],
-    ]);
+    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual([]);
+    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([[1]]);
     expect(await toArray(flatSlice(createIterable(), 0, 2))).toEqual([
       [1],
       [2],
     ]);
-    expect(await toArray(flatSlice(createIterable(), 1, 1))).toEqual(
-      []
-    );
-    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([
-      [2],
-    ]);
-    expect(await toArray(flatSlice(createIterable(), 2, 2))).toEqual(
-      []
-    );
+    expect(await toArray(flatSlice(createIterable(), 1, 1))).toEqual([]);
+    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([[2]]);
+    expect(await toArray(flatSlice(createIterable(), 2, 2))).toEqual([]);
   });
 
   it("slices an iterable with two elements in a chunk", async () => {
@@ -175,15 +155,9 @@ describe(flatSlice.name, () => {
       yield [1, 2];
     };
 
-    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual(
-      []
-    );
-    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([
-      [1],
-    ]);
-    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([
-      [2],
-    ]);
+    expect(await toArray(flatSlice(createIterable(), 0, 0))).toEqual([]);
+    expect(await toArray(flatSlice(createIterable(), 0, 1))).toEqual([[1]]);
+    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([[2]]);
   });
 
   it("slices an iterable within a chunk", async () => {
@@ -191,9 +165,7 @@ describe(flatSlice.name, () => {
       yield [1, 2, 3];
     };
 
-    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([
-      [2],
-    ]);
+    expect(await toArray(flatSlice(createIterable(), 1, 2))).toEqual([[2]]);
   });
 });
 
@@ -209,12 +181,8 @@ describe(filter.name, () => {
       yield 1;
     };
 
-    expect(
-      await toArray(filter(createIterable(), (x) => x > 1))
-    ).toEqual([]);
-    expect(
-      await toArray(filter(createIterable(), (x) => x <= 1))
-    ).toEqual([1]);
+    expect(await toArray(filter(createIterable(), (x) => x > 1))).toEqual([]);
+    expect(await toArray(filter(createIterable(), (x) => x <= 1))).toEqual([1]);
   });
 
   it("slices an iterable with two elements", async () => {
@@ -223,11 +191,7 @@ describe(filter.name, () => {
       yield 2;
     };
 
-    expect(
-      await toArray(filter(createIterable(), (x) => x < 2))
-    ).toEqual([1]);
-    expect(
-      await toArray(filter(createIterable(), (x) => x > 1))
-    ).toEqual([2]);
+    expect(await toArray(filter(createIterable(), (x) => x < 2))).toEqual([1]);
+    expect(await toArray(filter(createIterable(), (x) => x > 1))).toEqual([2]);
   });
 });
