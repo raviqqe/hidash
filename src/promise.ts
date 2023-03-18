@@ -50,8 +50,9 @@ export const asyncSlice = async function* <T>(
       return;
     } else if (count >= start) {
       yield x;
-      count++;
     }
+
+    count++;
   }
 };
 
@@ -67,7 +68,8 @@ export const asyncChunkSlice = async function* <T>(
       return;
     } else if (count >= start) {
       yield xs.slice(0, end - count);
-      count += xs.length;
     }
+
+    count += xs.length;
   }
 };
