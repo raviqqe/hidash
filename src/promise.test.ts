@@ -19,10 +19,10 @@ describe(defer.name, () => {
 
     const callback = defer(async () => x++);
 
-    expect(await callback()).toBe(1);
+    expect(await callback()).toBe(0);
+    expect(await callback()).toBe(0);
     expect(await callback()).toBe(1);
     expect(await callback()).toBe(2);
-    expect(await callback()).toBe(3);
   });
 
   it("defers values with different arguments", async () => {
