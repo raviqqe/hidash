@@ -78,7 +78,7 @@ export const flatSlice = <T>(
 
 export const filter = async function* <T>(
   iterable: AsyncIterable<T>,
-  check: (x: T) => boolean
+  check: (x: T) => unknown
 ): AsyncIterable<T> {
   for await (const x of iterable) {
     if (check(x)) {
