@@ -4,7 +4,7 @@ export const sleep = (ms: number): Promise<void> =>
 export const defer = <T, F extends (...args: never[]) => Promise<T>>(
   callback: F
 ): ((...args: Parameters<F>) => Promise<T>) => {
-  let cache: Record<string, Promise<T>> = {};
+  const cache: Record<string, Promise<T>> = {};
 
   return async (...args: Parameters<F>): Promise<T> => {
     const key = JSON.stringify(args);
