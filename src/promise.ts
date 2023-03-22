@@ -4,13 +4,15 @@ export const sleep = (ms: number): Promise<void> =>
 export const defer = <T, F extends (...args: never[]) => Promise<T>>(
   callback: F
 ): ((...args: Parameters<F>) => Promise<T>) => {
-  let cache: Promise<T> | undefined = undefined;
+  const cache: Record<string, Promise<T>> = {};
 
   return async (...args: Parameters<F>): Promise<T> => {
-    const lastCache = cache;
-    cache = callback(...args);
+    const key = JSON.stringify(args);
+    const lastPromise = cache[key];
+    const promise = callback(...args);
+    cache[key] = promise;
 
-    return lastCache ?? cache;
+    return lastPromise ?? promise;
   };
 };
 
