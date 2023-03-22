@@ -34,6 +34,8 @@ describe(defer.name, () => {
     expect(await callback(2)).toBe(3);
     expect(await callback(1)).toBe(1);
     expect(await callback(2)).toBe(3);
+    expect(await callback(1)).toBe(3);
+    expect(await callback(2)).toBe(5);
     expect(await callback(1)).toBe(5);
     expect(await callback(2)).toBe(7);
   });
