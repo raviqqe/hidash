@@ -13,13 +13,30 @@ it("sleeps", async () => {
   await sleep(0);
 });
 
-it("defers a value", async () => {
-  const callback = defer(async (x: number) => x);
+describe(defer.name, () => {
+  it("defers a value", async () => {
+    let x = 0;
 
-  expect(await callback(1)).toBe(1);
-  expect(await callback(2)).toBe(1);
-  expect(await callback(3)).toBe(2);
-  expect(await callback(4)).toBe(3);
+    const callback = defer(async () => x++);
+
+    expect(await callback()).toBe(1);
+    expect(await callback()).toBe(1);
+    expect(await callback()).toBe(2);
+    expect(await callback()).toBe(3);
+  });
+
+  it("defers values with different arguments", async () => {
+    let y = 0;
+
+    const callback = defer(async (x: number) => x + y++);
+
+    expect(await callback(1)).toBe(1);
+    expect(await callback(2)).toBe(3);
+    expect(await callback(1)).toBe(1);
+    expect(await callback(2)).toBe(3);
+    expect(await callback(1)).toBe(5);
+    expect(await callback(2)).toBe(7);
+  });
 });
 
 describe(toArray.name, () => {
