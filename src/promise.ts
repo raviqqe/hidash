@@ -69,7 +69,7 @@ export const flatSlice = <T>(
         if (count >= end) {
           return;
         } else if (xs.length + count >= start) {
-          yield xs.slice(start - count, end - count);
+          yield xs.slice(Math.max(start - count, 0), end - count);
         }
 
         count += xs.length;
