@@ -205,6 +205,11 @@ describe(flatSlice.name, () => {
       [2],
       [3, 4],
     ]);
+    expect(await toArray(flatSlice(createIterable(), 2, 2))).toEqual([]);
+    expect(await toArray(flatSlice(createIterable(), 2, 3))).toEqual([[3]]);
+    expect(await toArray(flatSlice(createIterable(), 2, 4))).toEqual([[3, 4]]);
+    expect(await toArray(flatSlice(createIterable(), 3, 3))).toEqual([]);
+    expect(await toArray(flatSlice(createIterable(), 3, 4))).toEqual([[4]]);
   });
 });
 
