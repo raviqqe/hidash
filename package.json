@@ -14,7 +14,7 @@
   "devDependencies": {
     "@raviqqe/eslint-config": "^1.0.22",
     "@raviqqe/tsconfig": "^1.0.1",
-    "@vitest/coverage-c8": "^0.29.2",
+    "@vitest/coverage-c8": "^0.30.0",
     "eslint": "^8.34.0",
     "typescript": "^5.0.2",
     "vitest": "^0.30.0"
