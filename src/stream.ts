@@ -35,3 +35,11 @@ export const stringsToBytes = (
 
   return stream(map(iterable(values), (text) => decoder.decode(text)));
 };
+
+export const bytesToStrings = (
+  values: ReadableStream<string>
+): ReadableStream<Uint8Array> => {
+  const encoder = new TextEncoder();
+
+  return stream(map(iterable(values), (text) => encoder.encode(text)));
+};
