@@ -1,3 +1,5 @@
+import { map } from "./promise.js";
+
 export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> => {
   return new ReadableStream({
     start: async (controller) => {
@@ -24,4 +26,10 @@ export const iterable = async function* <T>(
 
     yield result.value;
   }
+};
+
+export const stringsToBytes = (
+  stream: ReadableStream<Uint8Array>
+): ReadableStream<string> => {
+  return stream(map(iterable(stream)));
 };
