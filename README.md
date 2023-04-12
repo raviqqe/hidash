@@ -7,6 +7,12 @@
 
 Yet another extension to [Lodash](https://lodash.com/).
 
+It includes utility functions for the following types.
+
+- `string`
+- `AsyncIterable<T>`
+- `ReadableStream<T>`
+
 ## License
 
 [MIT](LICENSE)
