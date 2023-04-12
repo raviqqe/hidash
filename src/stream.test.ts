@@ -1,12 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { toArray } from "./promise.js";
-import {
-  stringsToBytes,
-  iterable,
-  stream,
-  stringsToBytes,
-  bytesToStrings,
-} from "./stream.js";
+import { iterable, stream, stringsToBytes, bytesToStrings } from "./stream.js";
 
 describe(iterable.name, () => {
   it("converts a stream into iterable", async () => {
