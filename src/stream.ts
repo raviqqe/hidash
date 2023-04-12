@@ -10,10 +10,18 @@ export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> => {
   });
 };
 
-export const iterable = function* <T>(
+export const iterable = async function* <T>(
   stream: ReadableStream<T>
 ): AsyncIterable<T> {
   const reader = stream.getReader();
 
-  for (;;) {}
+  for (;;) {
+    const result = await reader.read();
+
+    if (result.done) {
+      break;
+    }
+
+    yield result.value;
+  }
 };
