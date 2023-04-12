@@ -7,6 +7,7 @@ import {
   slice,
   flatSlice,
   filter,
+  map,
 } from "./promise.js";
 
 it("sleeps", async () => {
@@ -210,6 +211,28 @@ describe(flatSlice.name, () => {
     expect(await toArray(flatSlice(createIterable(), 2, 4))).toEqual([[3, 4]]);
     expect(await toArray(flatSlice(createIterable(), 3, 3))).toEqual([]);
     expect(await toArray(flatSlice(createIterable(), 3, 4))).toEqual([[4]]);
+  });
+});
+
+describe(map.name, () => {
+  it("maps a function to nothing", async () => {
+    expect(await toArray(map((async function* () {})(), () => true))).toEqual(
+      []
+    );
+  });
+
+  it("maps a function to values", async () => {
+    expect(
+      await toArray(
+        map(
+          (async function* () {
+            yield 2;
+            yield 3;
+          })(),
+          (x) => x * x
+        )
+      )
+    ).toEqual([4, 9]);
   });
 });
 

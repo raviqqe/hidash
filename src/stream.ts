@@ -1,7 +1,7 @@
 import { map } from "./promise.js";
 
-export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> => {
-  return new ReadableStream({
+export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> =>
+  new ReadableStream({
     start: async (controller) => {
       for await (const value of iterable) {
         controller.enqueue(value);
@@ -10,7 +10,6 @@ export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> => {
       controller.close();
     },
   });
-};
 
 export const iterable = async function* <T>(
   stream: ReadableStream<T>
@@ -28,7 +27,7 @@ export const iterable = async function* <T>(
   }
 };
 
-export const stringsToBytes = (
+export const bytesToStrings = (
   values: ReadableStream<Uint8Array>
 ): ReadableStream<string> => {
   const decoder = new TextDecoder();
@@ -36,7 +35,7 @@ export const stringsToBytes = (
   return stream(map(iterable(values), (text) => decoder.decode(text)));
 };
 
-export const bytesToStrings = (
+export const stringsToBytes = (
   values: ReadableStream<string>
 ): ReadableStream<Uint8Array> => {
   const encoder = new TextEncoder();
