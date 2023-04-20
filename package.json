@@ -12,6 +12,9 @@
     }
   },
   "exports": {
+    "./promise.js": "dist/promise.js",
+    "./stream.js": "dist/stream.js",
+    "./string.js": "dist/string.js",
     "./*.js": "dist/*.js"
   },
   "scripts": {
