@@ -6,17 +6,13 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
-    "./promise.js": {
-      "default": "dist/promise.js",
-      "types": "dist/promise.d.ts"
+    ".": {
+      "default": "dist/index.js",
+      "types": "dist/index.d.ts"
     },
-    "./stream.js": {
-      "default": "dist/stream.js",
-      "types": "dist/stream.d.ts"
-    },
-    "./string.js": {
-      "default": "dist/string.js",
-      "types": "dist/string.d.ts"
+    "./*.js": {
+      "default": "./dist/*.js",
+      "types": "./dist/*.d.ts"
     }
   },
   "scripts": {
