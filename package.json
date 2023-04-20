@@ -6,9 +6,18 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
-    "./promise.js": "dist/promise.js",
-    "./stream.js": "dist/stream.js",
-    "./string.js": "dist/string.js"
+    "./promise.js": {
+      "default": "dist/promise.js",
+      "types": "dist/promise.d.ts"
+    },
+    "./stream.js": {
+      "default": "dist/stream.js",
+      "types": "dist/stream.d.ts"
+    },
+    "./string.js": {
+      "default": "dist/string.js",
+      "types": "dist/string.d.ts"
+    }
   },
   "scripts": {
     "build": "tsc",
