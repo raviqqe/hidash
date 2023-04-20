@@ -27,7 +27,7 @@ export const toIterable = async function* <T>(
   }
 };
 
-export const bytesToStrings = (
+export const toStringStream = (
   values: ReadableStream<Uint8Array>
 ): ReadableStream<string> => {
   const decoder = new TextDecoder();
@@ -35,7 +35,7 @@ export const bytesToStrings = (
   return map(values, (text) => decoder.decode(text));
 };
 
-export const stringsToBytes = (
+export const toByteStream = (
   values: ReadableStream<string>
 ): ReadableStream<Uint8Array> => {
   const encoder = new TextEncoder();

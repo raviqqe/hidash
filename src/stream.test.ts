@@ -3,8 +3,8 @@ import { toArray } from "./promise.js";
 import {
   toIterable,
   toStream,
-  stringsToBytes,
-  bytesToStrings,
+  toByteStream,
+  toStringStream,
 } from "./stream.js";
 
 describe(toIterable.name, () => {
@@ -44,13 +44,13 @@ describe(toStream.name, () => {
   });
 });
 
-describe(stringsToBytes.name, () => {
+describe(toByteStream.name, () => {
   it("converts byte stream to string stream", async () => {
     expect(
       await toArray(
         toIterable(
-          bytesToStrings(
-            stringsToBytes(
+          toStringStream(
+            toByteStream(
               new ReadableStream({
                 start: (controller) => {
                   controller.enqueue("foo");
