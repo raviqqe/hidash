@@ -4,16 +4,15 @@
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "type": "module",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "dist/index.d.ts",
-      "default": "dist/index.js"
-    },
-    "./*.js": {
-      "types": "dist/*.d.ts",
-      "default": "dist/*.js"
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ]
     }
+  },
+  "exports": {
+    "./*.js": "dist/*.js"
   },
   "scripts": {
     "build": "tsc",
