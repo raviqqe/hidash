@@ -12,9 +12,7 @@
     }
   },
   "exports": {
-    "./*.js": {
-      "default": "dist/*.js"
-    }
+    "./*.js": "dist/*.js"
   },
   "scripts": {
     "build": "tsc",
