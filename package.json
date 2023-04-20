@@ -4,7 +4,12 @@
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "type": "module",
-  "main": "dist/index.js",
+  "exports": [
+    "dist/index.js",
+    "dist/promise.js",
+    "dist/stream.js",
+    "dist/string.js"
+  ],
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
