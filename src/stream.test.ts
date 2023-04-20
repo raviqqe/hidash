@@ -1,12 +1,17 @@
 import { describe, expect, it } from "vitest";
 import { toArray } from "./promise.js";
-import { iterable, stream, stringsToBytes, bytesToStrings } from "./stream.js";
+import {
+  toIterable,
+  toStream,
+  stringsToBytes,
+  bytesToStrings,
+} from "./stream.js";
 
-describe(iterable.name, () => {
+describe(toIterable.name, () => {
   it("converts a stream into iterable", async () => {
     expect(
       await toArray(
-        iterable(
+        toIterable(
           new ReadableStream({
             start: (controller) => {
               controller.enqueue(1);
@@ -21,12 +26,12 @@ describe(iterable.name, () => {
   });
 });
 
-describe(stream.name, () => {
+describe(toStream.name, () => {
   it("converts iterable into a stream", async () => {
     expect(
       await toArray(
-        iterable(
-          stream(
+        toIterable(
+          toStream(
             (async function* () {
               yield 1;
               yield 2;
@@ -43,7 +48,7 @@ describe(stringsToBytes.name, () => {
   it("converts byte stream to string stream", async () => {
     expect(
       await toArray(
-        iterable(
+        toIterable(
           bytesToStrings(
             stringsToBytes(
               new ReadableStream({
