@@ -28,19 +28,19 @@ export const toIterable = async function* <T>(
 };
 
 export const toStringStream = (
-  values: ReadableStream<Uint8Array>
+  stream: ReadableStream<Uint8Array>
 ): ReadableStream<string> => {
   const decoder = new TextDecoder();
 
-  return map(values, (text) => decoder.decode(text));
+  return map(stream, (text) => decoder.decode(text));
 };
 
 export const toByteStream = (
-  values: ReadableStream<string>
+  stream: ReadableStream<string>
 ): ReadableStream<Uint8Array> => {
   const encoder = new TextEncoder();
 
-  return map(values, (text) => encoder.encode(text));
+  return map(stream, (text) => encoder.encode(text));
 };
 
 export const map = <T, S>(
