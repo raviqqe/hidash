@@ -1,6 +1,6 @@
-import { map } from "./promise.js";
+import * as promise from "./promise.js";
 
-export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> =>
+export const toStream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> =>
   new ReadableStream({
     start: async (controller) => {
       for await (const value of iterable) {
@@ -11,7 +11,7 @@ export const stream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> =>
     },
   });
 
-export const iterable = async function* <T>(
+export const toIterable = async function* <T>(
   stream: ReadableStream<T>
 ): AsyncIterable<T> {
   const reader = stream.getReader();
@@ -27,18 +27,23 @@ export const iterable = async function* <T>(
   }
 };
 
-export const bytesToStrings = (
+export const toStringStream = (
   values: ReadableStream<Uint8Array>
 ): ReadableStream<string> => {
   const decoder = new TextDecoder();
 
-  return stream(map(iterable(values), (text) => decoder.decode(text)));
+  return map(values, (text) => decoder.decode(text));
 };
 
-export const stringsToBytes = (
+export const toByteStream = (
   values: ReadableStream<string>
 ): ReadableStream<Uint8Array> => {
   const encoder = new TextEncoder();
 
-  return stream(map(iterable(values), (text) => encoder.encode(text)));
+  return map(values, (text) => encoder.encode(text));
 };
+
+export const map = <T, S>(
+  stream: ReadableStream<T>,
+  callback: (value: T) => S
+): ReadableStream<S> => toStream(promise.map(toIterable(stream), callback));
