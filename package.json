@@ -11,7 +11,7 @@
       "types": "dist/index.d.ts"
     },
     "./*.js": {
-      "import": "./dist/*.js",
+      "default": "./dist/*.js",
       "types": "./dist/*.d.ts"
     }
   },
