@@ -4,13 +4,13 @@
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "type": "module",
-  "exports": [
-    "dist/index.js",
-    "dist/promise.js",
-    "dist/stream.js",
-    "dist/string.js"
-  ],
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "dist/index.js",
+    "./promise.js": "dist/promise.js",
+    "./stream.js": "dist/stream.js",
+    "./string.js": "dist/string.js"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "eslint 'src/**/*.ts'",
