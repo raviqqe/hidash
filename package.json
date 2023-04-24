@@ -12,10 +12,22 @@
     }
   },
   "exports": {
-    "./promise.js": "dist/promise.js",
-    "./stream.js": "dist/stream.js",
-    "./string.js": "dist/string.js",
-    "./*.js": "dist/*.js"
+    "./*.js": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./promise.js": {
+      "types": "./dist/promise.d.ts",
+      "default": "./dist/promise.js"
+    },
+    "./stream.js": {
+      "types": "./dist/stream.d.ts",
+      "default": "./dist/stream.js"
+    },
+    "./string.js": {
+      "types": "./dist/string.d.ts",
+      "default": "./dist/string.js"
+    }
   },
   "scripts": {
     "build": "tsc",
