@@ -19,9 +19,6 @@
   },
   "scripts": {
     "prepare": "npm run build",
-    "preinstall": "npm run build",
-    "install": "npm run build",
-    "postinstall": "npm run build",
     "build": "tsc",
     "lint": "eslint 'src/**/*.ts'",
     "test": "vitest --coverage"
