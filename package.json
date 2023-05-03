@@ -28,6 +28,6 @@
     "@vitest/coverage-c8": "^0.31.0",
     "eslint": "^8.34.0",
     "typescript": "^5.0.2",
-    "vitest": "^0.30.0"
+    "vitest": "^0.31.0"
   }
 }
