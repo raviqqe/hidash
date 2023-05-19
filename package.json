@@ -16,6 +16,14 @@
       "types": "./dist/*.d.ts",
       "default": "./dist/*.js"
     },
+    "./csv.js": {
+      "types": "./dist/csv.d.ts",
+      "default": "./dist/csv.js"
+    },
+    "./json.js": {
+      "types": "./dist/json.d.ts",
+      "default": "./dist/json.js"
+    },
     "./promise.js": {
       "types": "./dist/promise.d.ts",
       "default": "./dist/promise.js"
