@@ -1,5 +1,6 @@
-import { expect, it } from "vitest";
-import { capitalizeText, isAlphabetic } from "./string.js";
+import { describe, expect, it } from "vitest";
+import { capitalizeText, isAlphabetic, parseLines } from "./string.js";
+import { toArray } from "./promise.js";
 
 it("detects if a string is alphabetic", () => {
   expect(isAlphabetic("")).toBe(true);
@@ -19,4 +20,31 @@ it("capitalizes a text into a sentence case", () => {
   expect(capitalizeText("a")).toBe("A");
   expect(capitalizeText("aa")).toBe("Aa");
   expect(capitalizeText("a b")).toBe("A b");
+});
+
+describe(parseLines.name, () => {
+  it("parse a line", async () => {
+    expect(
+      await toArray(
+        parseLines(
+          (async function* () {
+            yield "a\n";
+          })()
+        )
+      )
+    ).toBe(["a"]);
+  });
+
+  it("parse lines", async () => {
+    expect(
+      await toArray(
+        parseLines(
+          (async function* () {
+            yield "a\n";
+            yield "b\n";
+          })()
+        )
+      )
+    ).toBe(["a"]);
+  });
 });
