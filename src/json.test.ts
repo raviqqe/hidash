@@ -1,6 +1,6 @@
-import { toArray } from "./promise.js";
 import { expect, it } from "vitest";
 import { parseLines } from "./json.js";
+import { toArray } from "./promise.js";
 
 it("parses nothing", async () => {
   expect(

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { capitalizeText, isAlphabetic, parseLines } from "./string.js";
 import { toArray } from "./promise.js";
+import { capitalizeText, isAlphabetic, parseLines } from "./string.js";
 
 it("detects if a string is alphabetic", () => {
   expect(isAlphabetic("")).toBe(true);
