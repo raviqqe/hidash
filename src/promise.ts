@@ -98,7 +98,6 @@ export const filter: {
   iterable: AsyncIterable<T>,
   check: (x: T) => unknown
 ): AsyncIterable<T> {
-  [].filter;
   for await (const x of iterable) {
     if (check(x)) {
       yield x;
