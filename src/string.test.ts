@@ -72,4 +72,21 @@ describe(parseLines.name, () => {
       )
     ).toEqual(["a", "b"]);
   });
+
+  it("parse broken lines", async () => {
+    expect(
+      await toArray(
+        parseLines(
+          (async function* () {
+            yield "a";
+            yield "b";
+            yield "\n";
+            yield "c";
+            yield "d";
+            yield "\n";
+          })()
+        )
+      )
+    ).toEqual(["ab", "cd"]);
+  });
 });
