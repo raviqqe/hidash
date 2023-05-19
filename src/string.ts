@@ -1,3 +1,5 @@
+import { last } from "./utility.js";
+
 export const isAlphabetic = (text: string): boolean =>
   [...text].every(
     (character) => character.toLowerCase() !== character.toUpperCase()
@@ -31,5 +33,3 @@ export const parseLines = async function* (
     yield line;
   }
 };
-
-const last = <T>(values: T[]): T | undefined => values[values.length - 1];
