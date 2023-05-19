@@ -1,6 +1,6 @@
 {
   "name": "@raviqqe/hidash",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "type": "module",
