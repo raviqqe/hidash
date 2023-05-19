@@ -7,5 +7,5 @@ export const parseLines = (
   map(parseStringLines(iterable), (line): unknown => JSON.parse(line));
 
 export const stringifyLines = (
-  jsons: AsyncIterable<unknown>
-): AsyncIterable<string> => map(jsons, (json) => JSON.stringify(json) + "\n");
+  values: AsyncIterable<unknown>
+): AsyncIterable<string> => map(values, (json) => JSON.stringify(json) + "\n");
