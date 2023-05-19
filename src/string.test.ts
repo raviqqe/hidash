@@ -23,7 +23,7 @@ it("capitalizes a text into a sentence case", () => {
 });
 
 describe(parseLines.name, () => {
-  it("parse a line", async () => {
+  it("parses a line", async () => {
     expect(
       await toArray(
         parseLines(
@@ -35,7 +35,7 @@ describe(parseLines.name, () => {
     ).toEqual(["a"]);
   });
 
-  it("parse lines", async () => {
+  it("parses lines", async () => {
     expect(
       await toArray(
         parseLines(
@@ -48,7 +48,7 @@ describe(parseLines.name, () => {
     ).toEqual(["a", "b"]);
   });
 
-  it("parse a line without a trailing newline", async () => {
+  it("parses a line without a trailing newline", async () => {
     expect(
       await toArray(
         parseLines(
@@ -60,7 +60,7 @@ describe(parseLines.name, () => {
     ).toEqual(["a"]);
   });
 
-  it("parse lines without a trailing newline", async () => {
+  it("parses lines without a trailing newline", async () => {
     expect(
       await toArray(
         parseLines(
@@ -73,7 +73,7 @@ describe(parseLines.name, () => {
     ).toEqual(["a", "b"]);
   });
 
-  it("parse broken lines", async () => {
+  it("parses broken lines", async () => {
     expect(
       await toArray(
         parseLines(
