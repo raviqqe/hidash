@@ -75,7 +75,7 @@ export const flatSlice = <T>(
         count += xs.length;
       }
     })(),
-    (xs) => !!xs.length
+    (xs) => xs.length
   );
 
 export const map = async function* <T, S>(
@@ -87,10 +87,18 @@ export const map = async function* <T, S>(
   }
 };
 
-export const filter = async function* <T>(
+export const filter: {
+  <T>(iterable: AsyncIterable<T>, check: (x: T) => unknown): AsyncIterable<T>;
+  // TODO How can we not tell lie to the type system...
+  <T, S extends T>(
+    iterable: AsyncIterable<T>,
+    check: (x: T) => x is S
+  ): AsyncIterable<S>;
+} = async function* <T>(
   iterable: AsyncIterable<T>,
   check: (x: T) => unknown
 ): AsyncIterable<T> {
+  [].filter;
   for await (const x of iterable) {
     if (check(x)) {
       yield x;
