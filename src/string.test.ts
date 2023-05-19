@@ -32,7 +32,7 @@ describe(parseLines.name, () => {
           })()
         )
       )
-    ).toBe(["a"]);
+    ).toEqual(["a"]);
   });
 
   it("parse lines", async () => {
@@ -45,6 +45,31 @@ describe(parseLines.name, () => {
           })()
         )
       )
-    ).toBe(["a"]);
+    ).toEqual(["a", "b"]);
+  });
+
+  it("parse a line without a trailing newline", async () => {
+    expect(
+      await toArray(
+        parseLines(
+          (async function* () {
+            yield "a";
+          })()
+        )
+      )
+    ).toEqual(["a"]);
+  });
+
+  it("parse lines without a trailing newline", async () => {
+    expect(
+      await toArray(
+        parseLines(
+          (async function* () {
+            yield "a\n";
+            yield "b";
+          })()
+        )
+      )
+    ).toEqual(["a", "b"]);
   });
 });
