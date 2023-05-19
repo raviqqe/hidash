@@ -71,16 +71,18 @@ describe(parse.name, () => {
 describe(stringify.name, () => {
   it("stringifies rows", async () => {
     expect(
-      await toArray(
-        stringify(
-          parse(
-            (async function* () {
-              yield "foo\n";
-              yield "bar\n";
-            })()
+      (
+        await toArray(
+          stringify(
+            parse(
+              (async function* () {
+                yield "foo\n";
+                yield "bar\n";
+              })()
+            )
           )
         )
-      )
+      ).join("")
     ).toBe("foo\nbar\n");
   });
 });
