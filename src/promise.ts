@@ -88,7 +88,7 @@ export const map = async function* <T, S>(
 };
 
 export const filter: {
-  // TODO How can we not tell lie to the type system...
+  // TODO How can we not tell lie to the type system...?
   <T, S extends T>(
     iterable: AsyncIterable<T>,
     check: (x: T) => x is S
