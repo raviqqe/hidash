@@ -5,13 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@raviqqe/hidash?style=flat-square)](https://www.npmjs.com/package/@raviqqe/hidash)
 [![License](https://img.shields.io/github/license/raviqqe/hidash.svg?style=flat-square)](LICENSE)
 
-Yet another extension to [Lodash](https://lodash.com/).
-
-It includes utility functions for the following types.
-
-- `string`
-- `AsyncIterable<T>`
-- `ReadableStream<T>`
+Yet another extension to [Lodash](https://lodash.com/) for the Web API.
 
 ## License
 
