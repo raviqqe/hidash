@@ -10,4 +10,4 @@ export const parse = (
 
 export const stringify = (
   rows: AsyncIterable<string[]>
-): AsyncIterable<string> => map(rows, (cells) => cells.join(","));
+): AsyncIterable<string> => map(rows, (cells) => cells.join(",") + "\n");
