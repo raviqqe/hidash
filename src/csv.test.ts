@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parse } from "./csv.js";
+import { parse, stringify } from "./csv.js";
 import { toArray } from "./promise.js";
 
 describe(parse.name, () => {
@@ -65,5 +65,22 @@ describe(parse.name, () => {
         )
       )
     ).toEqual([["foo"]]);
+  });
+});
+
+describe(stringify.name, () => {
+  it("stringifies rows", async () => {
+    expect(
+      await toArray(
+        stringify(
+          parse(
+            (async function* () {
+              yield "foo\n";
+              yield "bar\n";
+            })()
+          )
+        )
+      )
+    ).toBe("foo\nbar\n");
   });
 });
