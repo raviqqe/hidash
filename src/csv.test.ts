@@ -14,77 +14,54 @@ it("parses nothing", async () => {
   ).toEqual([]);
 });
 
-it("parses a JSON", async () => {
+it("parses a row with a cell", async () => {
   expect(
     await toArray(
       parse(
         (async function* () {
-          yield "{}";
+          yield "foo\n";
         })()
       )
     )
-  ).toEqual([{}]);
+  ).toEqual([["foo"]]);
 });
 
-it("parses a JSON with a trailing newline", async () => {
+it("parses a row with cells", async () => {
   expect(
     await toArray(
       parse(
         (async function* () {
-          yield "{}\n";
+          yield "foo,42\n";
         })()
       )
     )
-  ).toEqual([{}]);
+  ).toEqual([["foo", "42"]]);
 });
 
-it("parses two JSONs", async () => {
+it("parses rows", async () => {
   expect(
     await toArray(
       parse(
         (async function* () {
-          yield "{}\n{}";
+          yield "foo,1\n";
+          yield "bar,2\n";
         })()
       )
     )
-  ).toEqual([{}, {}]);
+  ).toEqual([
+    ["foo", "1"],
+    ["bar", "2"],
+  ]);
 });
 
-it("parses two JSONs in different yields", async () => {
+it("parses a row without a trailing newline", async () => {
   expect(
     await toArray(
       parse(
         (async function* () {
-          yield "{}\n{";
-          yield "}";
+          yield "foo";
         })()
       )
     )
-  ).toEqual([{}, {}]);
-});
-
-it("parses two JSONs with a newline delta", async () => {
-  expect(
-    await toArray(
-      parse(
-        (async function* () {
-          yield "{}";
-          yield "\n";
-          yield "{}";
-        })()
-      )
-    )
-  ).toEqual([{}, {}]);
-});
-
-it("parses three JSONs", async () => {
-  expect(
-    await toArray(
-      parse(
-        (async function* () {
-          yield "{}\n{}\n{}";
-        })()
-      )
-    )
-  ).toEqual([{}, {}, {}]);
+  ).toEqual([["foo"]]);
 });
