@@ -268,4 +268,12 @@ describe(isAsyncIterable.name, () => {
   it("checks an async iterable", async () => {
     expect(isAsyncIterable((async function* () {})())).toBe(true);
   });
+
+  it("checks an iterable", async () => {
+    expect(isAsyncIterable((function* () {})())).toBe(false);
+  });
+
+  it("checks an object", async () => {
+    expect(isAsyncIterable({})).toBe(false);
+  });
 });
