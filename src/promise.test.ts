@@ -8,6 +8,7 @@ import {
   flatSlice,
   filter,
   map,
+  isAsyncIterable,
 } from "./promise.js";
 
 it("sleeps", async () => {
@@ -260,5 +261,11 @@ describe(filter.name, () => {
 
     expect(await toArray(filter(createIterable(), (x) => x < 2))).toEqual([1]);
     expect(await toArray(filter(createIterable(), (x) => x > 1))).toEqual([2]);
+  });
+});
+
+describe(isAsyncIterable.name, () => {
+  it("checks an async iterable", async () => {
+    expect(isAsyncIterable((async function* () {})())).toBe(true);
   });
 });
