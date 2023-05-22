@@ -104,3 +104,9 @@ export const filter: {
     }
   }
 };
+
+export const isAsyncIterable = (
+  data: unknown
+): data is AsyncIterable<unknown> =>
+  typeof data === "object" &&
+  typeof (data as AsyncIterable<unknown>)[Symbol.asyncIterator] === "function";
