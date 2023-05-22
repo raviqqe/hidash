@@ -276,4 +276,12 @@ describe(isAsyncIterable.name, () => {
   it("checks an object", () => {
     expect(isAsyncIterable({})).toBe(false);
   });
+
+  it("checks null", () => {
+    expect(isAsyncIterable(null)).toBe(false);
+  });
+
+  it("checks undefined", () => {
+    expect(isAsyncIterable(undefined)).toBe(false);
+  });
 });
