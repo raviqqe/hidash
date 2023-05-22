@@ -265,15 +265,15 @@ describe(filter.name, () => {
 });
 
 describe(isAsyncIterable.name, () => {
-  it("checks an async iterable", async () => {
+  it("checks an async iterable", () => {
     expect(isAsyncIterable((async function* () {})())).toBe(true);
   });
 
-  it("checks an iterable", async () => {
+  it("checks an iterable", () => {
     expect(isAsyncIterable((function* () {})())).toBe(false);
   });
 
-  it("checks an object", async () => {
+  it("checks an object", () => {
     expect(isAsyncIterable({})).toBe(false);
   });
 });
