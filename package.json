@@ -3,6 +3,10 @@
   "version": "1.6.1",
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
+  "license": "MIT",
+  "publishConfig": {
+    "provenance": true
+  },
   "type": "module",
   "typesVersions": {
     "*": {
