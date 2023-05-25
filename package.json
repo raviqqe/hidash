@@ -1,6 +1,6 @@
 {
   "name": "@raviqqe/hidash",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "license": "MIT",
@@ -20,25 +20,9 @@
       "types": "./dist/*.d.ts",
       "default": "./dist/*.js"
     },
-    "./csv.js": {
-      "types": "./dist/csv.d.ts",
-      "default": "./dist/csv.js"
-    },
-    "./json.js": {
-      "types": "./dist/json.d.ts",
-      "default": "./dist/json.js"
-    },
-    "./promise.js": {
-      "types": "./dist/promise.d.ts",
-      "default": "./dist/promise.js"
-    },
-    "./stream.js": {
-      "types": "./dist/stream.d.ts",
-      "default": "./dist/stream.js"
-    },
-    "./string.js": {
-      "types": "./dist/string.d.ts",
-      "default": "./dist/string.js"
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
     }
   },
   "scripts": {
