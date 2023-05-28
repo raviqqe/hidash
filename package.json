@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "prepare": "npm run build",
     "lint": "eslint 'src/**/*.ts'",
     "test": "vitest --coverage"
   },
