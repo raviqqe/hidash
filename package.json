@@ -1,6 +1,6 @@
 {
   "name": "@raviqqe/hidash",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "license": "MIT",
@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "prepare": "npm run build",
     "lint": "eslint 'src/**/*.ts'",
     "test": "vitest --coverage"
   },
