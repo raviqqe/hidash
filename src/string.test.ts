@@ -5,6 +5,7 @@ import {
   capitalizeText,
   isAlphabetic,
   parseLines,
+  isUpperCase,
 } from "./string.js";
 
 it("detects if a string is alphabetic", () => {
@@ -28,10 +29,10 @@ it("checks if a text is in lower case", () => {
 });
 
 it("checks if a text is in upper case", () => {
-  expect(isLowerCase("")).toBe(true);
-  expect(isLowerCase("a")).toBe(false);
-  expect(isLowerCase("A")).toBe(true);
-  expect(isLowerCase("aA")).toBe(false);
+  expect(isUpperCase("")).toBe(true);
+  expect(isUpperCase("a")).toBe(false);
+  expect(isUpperCase("A")).toBe(true);
+  expect(isUpperCase("aA")).toBe(false);
 });
 
 it("capitalizes a text into a sentence case", () => {
