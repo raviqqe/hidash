@@ -5,6 +5,12 @@ export const isAlphabetic = (text: string): boolean =>
     (character) => character.toLowerCase() !== character.toUpperCase()
   );
 
+export const isLowerCase = (text: string): boolean =>
+  text === text.toLowerCase();
+
+export const isUpperCase = (text: string): boolean =>
+  text === text.toUpperCase();
+
 export const capitalizeText = (text: string): string =>
   (text[0]?.toUpperCase() ?? "") + text.slice(1);
 

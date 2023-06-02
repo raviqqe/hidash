@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { toArray } from "./promise.js";
-import { capitalizeText, isAlphabetic, parseLines } from "./string.js";
+import {
+  isLowerCase,
+  capitalizeText,
+  isAlphabetic,
+  parseLines,
+  isUpperCase,
+} from "./string.js";
 
 it("detects if a string is alphabetic", () => {
   expect(isAlphabetic("")).toBe(true);
@@ -13,6 +19,20 @@ it("detects if a string is alphabetic", () => {
   expect(isAlphabetic(",")).toBe(false);
   expect(isAlphabetic("aa")).toBe(true);
   expect(isAlphabetic("a ")).toBe(false);
+});
+
+it("checks if a text is in lower case", () => {
+  expect(isLowerCase("")).toBe(true);
+  expect(isLowerCase("a")).toBe(true);
+  expect(isLowerCase("A")).toBe(false);
+  expect(isLowerCase("aA")).toBe(false);
+});
+
+it("checks if a text is in upper case", () => {
+  expect(isUpperCase("")).toBe(true);
+  expect(isUpperCase("a")).toBe(false);
+  expect(isUpperCase("A")).toBe(true);
+  expect(isUpperCase("aA")).toBe(false);
 });
 
 it("capitalizes a text into a sentence case", () => {
