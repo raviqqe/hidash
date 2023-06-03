@@ -1,5 +1,5 @@
-export const interleave = <T>(xs: T[], separator: T): T[] => {
-  const ys: T[] = [];
+export const interleave = <T, S>(xs: T[], separator: S): (T | S)[] => {
+  const ys = [];
 
   for (const [index, value] of xs.entries()) {
     ys.push(value);
