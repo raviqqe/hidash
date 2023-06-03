@@ -8,13 +8,6 @@
     "provenance": true
   },
   "type": "module",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
-    }
-  },
   "exports": {
     "./*.js": {
       "types": "./dist/*.d.ts",
