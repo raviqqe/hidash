@@ -1,6 +1,6 @@
 {
   "name": "@raviqqe/hidash",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Yet another extension to Lodash",
   "repository": "https://github.com/raviqqe/hidash",
   "license": "MIT",
@@ -8,13 +8,6 @@
     "provenance": true
   },
   "type": "module",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
-    }
-  },
   "exports": {
     "./*.js": {
       "types": "./dist/*.d.ts",
