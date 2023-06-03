@@ -1,9 +1,12 @@
 export const interleave = <T>(xs: T[], separator: T): T[] => {
   const ys: T[] = [];
 
-  for (const value of xs.slice(0, -1)) {
+  for (const [index, value] of xs.entries()) {
     ys.push(value);
-    ys.push(separator);
+
+    if (index !== xs.length - 1) {
+      ys.push(separator);
+    }
   }
 
   return ys;
