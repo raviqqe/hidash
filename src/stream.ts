@@ -12,7 +12,7 @@ export const toStream = <T>(iterable: AsyncIterable<T>): ReadableStream<T> =>
   });
 
 export const toIterable = async function* <T>(
-  stream: ReadableStream<T>
+  stream: ReadableStream<T>,
 ): AsyncIterable<T> {
   const reader = stream.getReader();
 
@@ -28,7 +28,7 @@ export const toIterable = async function* <T>(
 };
 
 export const toStringStream = (
-  stream: ReadableStream<Uint8Array>
+  stream: ReadableStream<Uint8Array>,
 ): ReadableStream<string> => {
   const decoder = new TextDecoder();
 
@@ -36,7 +36,7 @@ export const toStringStream = (
 };
 
 export const toByteStream = (
-  stream: ReadableStream<string>
+  stream: ReadableStream<string>,
 ): ReadableStream<Uint8Array> => {
   const encoder = new TextEncoder();
 
@@ -45,5 +45,5 @@ export const toByteStream = (
 
 export const map = <T, S>(
   stream: ReadableStream<T>,
-  callback: (value: T) => S
+  callback: (value: T) => S,
 ): ReadableStream<S> => toStream(promise.map(toIterable(stream), callback));

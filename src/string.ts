@@ -2,7 +2,7 @@ import { last } from "./utility.js";
 
 export const isAlphabetic = (text: string): boolean =>
   [...text].every(
-    (character) => character.toLowerCase() !== character.toUpperCase()
+    (character) => character.toLowerCase() !== character.toUpperCase(),
   );
 
 export const isLowerCase = (text: string): boolean =>
@@ -15,7 +15,7 @@ export const capitalizeText = (text: string): string =>
   (text[0]?.toUpperCase() ?? "") + text.slice(1);
 
 export const parseLines = async function* (
-  iterable: AsyncIterable<string>
+  iterable: AsyncIterable<string>,
 ): AsyncIterable<string> {
   let line = "";
 

@@ -19,9 +19,9 @@ describe(toIterable.name, () => {
               controller.enqueue(3);
               controller.close();
             },
-          })
-        )
-      )
+          }),
+        ),
+      ),
     ).toEqual([1, 2, 3]);
   });
 });
@@ -36,10 +36,10 @@ describe(toStream.name, () => {
               yield 1;
               yield 2;
               yield 3;
-            })()
-          )
-        )
-      )
+            })(),
+          ),
+        ),
+      ),
     ).toEqual([1, 2, 3]);
   });
 });
@@ -58,11 +58,11 @@ describe(toByteStream.name, () => {
                   controller.enqueue("baz");
                   controller.close();
                 },
-              })
-            )
-          )
-        )
-      )
+              }),
+            ),
+          ),
+        ),
+      ),
     ).toEqual(["foo", "bar", "baz"]);
   });
 });

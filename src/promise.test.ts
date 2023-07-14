@@ -53,8 +53,8 @@ describe(toArray.name, () => {
       await toArray(
         (async function* () {
           yield 1;
-        })()
-      )
+        })(),
+      ),
     ).toEqual([1]);
   });
 
@@ -64,8 +64,8 @@ describe(toArray.name, () => {
         (async function* () {
           yield 1;
           yield 2;
-        })()
-      )
+        })(),
+      ),
     ).toEqual([1, 2]);
   });
 });
@@ -80,8 +80,8 @@ describe(toFlatArray.name, () => {
       await toFlatArray(
         (async function* () {
           yield [1];
-        })()
-      )
+        })(),
+      ),
     ).toEqual([1]);
   });
 
@@ -90,8 +90,8 @@ describe(toFlatArray.name, () => {
       await toFlatArray(
         (async function* () {
           yield [1, 2];
-        })()
-      )
+        })(),
+      ),
     ).toEqual([1, 2]);
   });
 
@@ -101,8 +101,8 @@ describe(toFlatArray.name, () => {
         (async function* () {
           yield [1];
           yield [2];
-        })()
-      )
+        })(),
+      ),
     ).toEqual([1, 2]);
   });
 });
@@ -140,7 +140,7 @@ describe(slice.name, () => {
 describe(flatSlice.name, () => {
   it("slices an empty iterable", async () => {
     expect(await toArray(flatSlice((async function* () {})(), 0, 0))).toEqual(
-      []
+      [],
     );
   });
 
@@ -218,7 +218,7 @@ describe(flatSlice.name, () => {
 describe(map.name, () => {
   it("maps a function to nothing", async () => {
     expect(await toArray(map((async function* () {})(), () => true))).toEqual(
-      []
+      [],
     );
   });
 
@@ -230,9 +230,9 @@ describe(map.name, () => {
             yield 2;
             yield 3;
           })(),
-          (x) => x * x
-        )
-      )
+          (x) => x * x,
+        ),
+      ),
     ).toEqual([4, 9]);
   });
 });
@@ -240,7 +240,7 @@ describe(map.name, () => {
 describe(filter.name, () => {
   it("slices an empty iterable", async () => {
     expect(
-      await toArray(filter((async function* () {})(), () => true))
+      await toArray(filter((async function* () {})(), () => true)),
     ).toEqual([]);
   });
 
