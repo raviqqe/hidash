@@ -1,6 +1,6 @@
 export const interleave = <T, S>(
   xs: T[],
-  separator: S | ((index: number) => S)
+  separator: S | ((index: number) => S),
 ): (T | S)[] => {
   const ys = [];
 

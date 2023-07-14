@@ -2,7 +2,7 @@ export const sleep = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 export const defer = <T, F extends (...args: never[]) => Promise<T>>(
-  callback: F
+  callback: F,
 ): ((...args: Parameters<F>) => Promise<T>) => {
   const cache: Record<string, Promise<T>> = {};
 
@@ -27,7 +27,7 @@ export const toArray = async <T>(iterable: AsyncIterable<T>): Promise<T[]> => {
 };
 
 export const toFlatArray = async <T>(
-  iterable: AsyncIterable<T[]>
+  iterable: AsyncIterable<T[]>,
 ): Promise<T[]> => {
   const values: T[] = [];
 
@@ -41,7 +41,7 @@ export const toFlatArray = async <T>(
 export const slice = async function* <T>(
   iterable: AsyncIterable<T>,
   start: number,
-  end: number
+  end: number,
 ): AsyncIterable<T> {
   let count = 0;
 
@@ -59,7 +59,7 @@ export const slice = async function* <T>(
 export const flatSlice = <T>(
   iterable: AsyncIterable<T[]>,
   start: number,
-  end: number
+  end: number,
 ): AsyncIterable<T[]> =>
   filter(
     (async function* () {
@@ -75,12 +75,12 @@ export const flatSlice = <T>(
         count += xs.length;
       }
     })(),
-    (xs) => xs.length
+    (xs) => xs.length,
   );
 
 export const map = async function* <T, S>(
   iterable: AsyncIterable<T>,
-  callback: (x: T) => S
+  callback: (x: T) => S,
 ): AsyncIterable<S> {
   for await (const x of iterable) {
     yield callback(x);
@@ -91,12 +91,12 @@ export const filter: {
   // TODO How can we not tell lie to the type system...?
   <T, S extends T>(
     iterable: AsyncIterable<T>,
-    check: (x: T) => x is S
+    check: (x: T) => x is S,
   ): AsyncIterable<S>;
   <T>(iterable: AsyncIterable<T>, check: (x: T) => unknown): AsyncIterable<T>;
 } = async function* <T>(
   iterable: AsyncIterable<T>,
-  check: (x: T) => unknown
+  check: (x: T) => unknown,
 ): AsyncIterable<T> {
   for await (const x of iterable) {
     if (check(x)) {
@@ -106,7 +106,7 @@ export const filter: {
 };
 
 export const isAsyncIterable = (
-  data: unknown
+  data: unknown,
 ): data is AsyncIterable<unknown> =>
   Boolean(data) &&
   typeof data === "object" &&

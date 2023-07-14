@@ -8,9 +8,9 @@ it("parses nothing", async () => {
       parseLines(
         (async function* () {
           yield "";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([]);
 });
 
@@ -20,9 +20,9 @@ it("parses a JSON", async () => {
       parseLines(
         (async function* () {
           yield "{}";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([{}]);
 });
 
@@ -32,9 +32,9 @@ it("parses a JSON with a trailing newline", async () => {
       parseLines(
         (async function* () {
           yield "{}\n";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([{}]);
 });
 
@@ -44,9 +44,9 @@ it("parses two JSONs", async () => {
       parseLines(
         (async function* () {
           yield "{}\n{}";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([{}, {}]);
 });
 
@@ -57,9 +57,9 @@ it("parses two JSONs in different yields", async () => {
         (async function* () {
           yield "{}\n{";
           yield "}";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([{}, {}]);
 });
 
@@ -71,9 +71,9 @@ it("parses two JSONs with a newline delta", async () => {
           yield "{}";
           yield "\n";
           yield "{}";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([{}, {}]);
 });
 
@@ -83,8 +83,8 @@ it("parses three JSONs", async () => {
       parseLines(
         (async function* () {
           yield "{}\n{}\n{}";
-        })()
-      )
-    )
+        })(),
+      ),
+    ),
   ).toEqual([{}, {}, {}]);
 });

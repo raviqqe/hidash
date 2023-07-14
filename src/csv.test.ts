@@ -9,9 +9,9 @@ describe(parse.name, () => {
         parse(
           (async function* () {
             yield "";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual([]);
   });
 
@@ -21,9 +21,9 @@ describe(parse.name, () => {
         parse(
           (async function* () {
             yield "foo\n";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual([["foo"]]);
   });
 
@@ -33,9 +33,9 @@ describe(parse.name, () => {
         parse(
           (async function* () {
             yield "foo,42\n";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual([["foo", "42"]]);
   });
 
@@ -46,9 +46,9 @@ describe(parse.name, () => {
           (async function* () {
             yield "foo,1\n";
             yield "bar,2\n";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual([
       ["foo", "1"],
       ["bar", "2"],
@@ -61,9 +61,9 @@ describe(parse.name, () => {
         parse(
           (async function* () {
             yield "foo";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual([["foo"]]);
   });
 });
@@ -78,11 +78,11 @@ describe(stringify.name, () => {
               (async function* () {
                 yield "foo\n";
                 yield "bar\n";
-              })()
-            )
-          )
+              })(),
+            ),
+          ),
         )
-      ).join("")
+      ).join(""),
     ).toBe("foo\nbar\n");
   });
 });

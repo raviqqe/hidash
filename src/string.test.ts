@@ -49,9 +49,9 @@ describe(parseLines.name, () => {
         parseLines(
           (async function* () {
             yield "a\n";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual(["a"]);
   });
 
@@ -62,9 +62,9 @@ describe(parseLines.name, () => {
           (async function* () {
             yield "a\n";
             yield "b\n";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual(["a", "b"]);
   });
 
@@ -74,9 +74,9 @@ describe(parseLines.name, () => {
         parseLines(
           (async function* () {
             yield "a";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual(["a"]);
   });
 
@@ -87,9 +87,9 @@ describe(parseLines.name, () => {
           (async function* () {
             yield "a\n";
             yield "b";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual(["a", "b"]);
   });
 
@@ -104,9 +104,9 @@ describe(parseLines.name, () => {
             yield "c";
             yield "d";
             yield "\n";
-          })()
-        )
-      )
+          })(),
+        ),
+      ),
     ).toEqual(["ab", "cd"]);
   });
 });
