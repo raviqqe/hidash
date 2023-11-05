@@ -19,7 +19,7 @@
     }
   },
   "scripts": {
-    "build": "esbuild --minify --format=esm --sourcemap --outdir=dist 'src/*.ts'",
+    "build": "esbuild --minify --format=esm --sourcemap --outdir=dist $(echo src/*.ts | grep -v test)",
     "prepare": "npm run build",
     "lint": "eslint 'src/**/*.ts'",
     "test": "vitest --coverage"
