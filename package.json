@@ -19,7 +19,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "esbuild --minify --sourcemap --outdir=dist 'src/*.ts'",
     "prepare": "npm run build",
     "lint": "eslint 'src/**/*.ts'",
     "test": "vitest --coverage"
