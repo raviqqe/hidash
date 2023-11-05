@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "npm run build:tsc && npm run build:esbuild",
-    "build:esbulid": "esbuild --minify --format=esm --sourcemap --outdir=dist $(ls src/*.ts | grep -v test)",
+    "build:esbuild": "esbuild --minify --format=esm --sourcemap --outdir=dist $(ls src/*.ts | grep -v test)",
     "build:tsc": "tsc --noEmit",
     "prepare": "npm run build",
     "lint": "eslint 'src/**/*.ts'",
