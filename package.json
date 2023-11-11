@@ -34,5 +34,8 @@
     "eslint": "^8.34.0",
     "typescript": "^5.0.2",
     "vitest": "^0.34.1"
+  },
+  "dependencies": {
+    "@raviqqe/loscore": "^0.1.3"
   }
 }
