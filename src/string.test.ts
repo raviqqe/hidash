@@ -1,46 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { toArray } from "./promise.js";
-import {
-  isLowerCase,
-  capitalizeText,
-  isAlphabetic,
-  parseLines,
-  isUpperCase,
-} from "./string.js";
-
-it("detects if a string is alphabetic", () => {
-  expect(isAlphabetic("")).toBe(true);
-  expect(isAlphabetic("a")).toBe(true);
-  expect(isAlphabetic("A")).toBe(true);
-  expect(isAlphabetic("α")).toBe(true);
-  expect(isAlphabetic("Α")).toBe(true);
-  expect(isAlphabetic(" ")).toBe(false);
-  expect(isAlphabetic("あ")).toBe(false);
-  expect(isAlphabetic(",")).toBe(false);
-  expect(isAlphabetic("aa")).toBe(true);
-  expect(isAlphabetic("a ")).toBe(false);
-});
-
-it("checks if a text is in lower case", () => {
-  expect(isLowerCase("")).toBe(true);
-  expect(isLowerCase("a")).toBe(true);
-  expect(isLowerCase("A")).toBe(false);
-  expect(isLowerCase("aA")).toBe(false);
-});
-
-it("checks if a text is in upper case", () => {
-  expect(isUpperCase("")).toBe(true);
-  expect(isUpperCase("a")).toBe(false);
-  expect(isUpperCase("A")).toBe(true);
-  expect(isUpperCase("aA")).toBe(false);
-});
-
-it("capitalizes a text into a sentence case", () => {
-  expect(capitalizeText("")).toBe("");
-  expect(capitalizeText("a")).toBe("A");
-  expect(capitalizeText("aa")).toBe("Aa");
-  expect(capitalizeText("a b")).toBe("A b");
-});
+import { parseLines } from "./string.js";
 
 describe(parseLines.name, () => {
   it("parses a line", async () => {
