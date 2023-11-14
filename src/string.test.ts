@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseLines } from "./string.js";
+import { toArray } from "@raviqqe/loscore/async";
 
 describe(parseLines.name, () => {
   it("parses a line", async () => {

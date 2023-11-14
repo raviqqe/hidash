@@ -1,4 +1,4 @@
-import { map } from "./promise.js";
+import { map } from "@raviqqe/loscore/async";
 import { parseLines as parseStringLines } from "./string.js";
 
 export const parseLines = (
