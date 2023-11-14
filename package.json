@@ -27,7 +27,7 @@
     "test": "vitest --coverage"
   },
   "dependencies": {
-    "@raviqqe/loscore": "^0.1.3"
+    "@raviqqe/loscore": "^0.1.5"
   },
   "devDependencies": {
     "@raviqqe/eslint-config": "^1.0.22",
