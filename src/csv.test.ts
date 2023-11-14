@@ -1,6 +1,6 @@
+import { toArray } from "@raviqqe/loscore/async";
 import { describe, expect, it } from "vitest";
 import { parse, stringify } from "./csv.js";
-import { toArray } from "@raviqqe/loscore/async";
 
 describe(parse.name, () => {
   it("parses nothing", async () => {

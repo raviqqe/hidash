@@ -1,6 +1,6 @@
+import { toArray } from "@raviqqe/loscore/async";
 import { expect, it } from "vitest";
 import { parseLines } from "./json.js";
-import { toArray } from "@raviqqe/loscore/async";
 
 it("parses nothing", async () => {
   expect(
