@@ -26,6 +26,9 @@
     "lint": "eslint 'src/**/*.ts'",
     "test": "vitest --coverage"
   },
+  "dependencies": {
+    "@raviqqe/loscore": "^0.1.6"
+  },
   "devDependencies": {
     "@raviqqe/eslint-config": "^1.0.22",
     "@raviqqe/tsconfig": "^1.0.1",
