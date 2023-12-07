@@ -23,14 +23,14 @@
     "build:esbuild": "esbuild --minify --format=esm --sourcemap --outdir=dist $(git ls-files src)",
     "build:tsc": "tsc --emitDeclarationOnly",
     "prepare": "npm run build",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint src",
     "test": "vitest --coverage"
   },
   "dependencies": {
     "@raviqqe/loscore": "^0.1.6"
   },
   "devDependencies": {
-    "@raviqqe/eslint-config": "^1.0.22",
+    "@raviqqe/eslint-config": "^2.0.2",
     "@raviqqe/tsconfig": "^1.0.1",
     "@vitest/coverage-v8": "^1.0.1",
     "esbuild": "^0.19.5",
