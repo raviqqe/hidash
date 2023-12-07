@@ -23,7 +23,7 @@
     "build:esbuild": "esbuild --minify --format=esm --sourcemap --outdir=dist $(git ls-files src)",
     "build:tsc": "tsc --emitDeclarationOnly",
     "prepare": "npm run build",
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint src",
     "test": "vitest --coverage"
   },
   "dependencies": {
