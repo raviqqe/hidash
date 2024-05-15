@@ -34,7 +34,7 @@
     "@raviqqe/tsconfig": "^1.0.1",
     "@vitest/coverage-v8": "^1.0.1",
     "esbuild": "^0.21.1",
-    "eslint": "^8.34.0",
+    "eslint": "^9.2.0",
     "typescript": "^5.0.2",
     "vitest": "^1.0.1"
   }
