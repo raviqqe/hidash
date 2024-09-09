@@ -30,7 +30,7 @@
     "@raviqqe/loscore": "^0.2.0"
   },
   "devDependencies": {
-    "@raviqqe/eslint-config": "^3.0.0",
+    "@raviqqe/eslint-config": "^4.0.2",
     "@raviqqe/tsconfig": "^1.0.1",
     "@vitest/coverage-v8": "^2.0.1",
     "esbuild": "^0.23.0",
