@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@raviqqe/loscore':
         specifier: ^0.2.0
-        version: 0.2.13
+        version: 0.2.14
     devDependencies:
       '@raviqqe/eslint-config':
         specifier: ^5.0.0
@@ -341,8 +341,8 @@ packages:
   '@raviqqe/eslint-config@5.0.0':
     resolution: {integrity: sha512-OjWnCWjnP054TMIpT6mN3zIxVIVDEbftoZm1bbJhm8YpcjqniCx8D2CNtO4T+qto3D7SfDfx2mKfuUmsJsjc2A==}
 
-  '@raviqqe/loscore@0.2.13':
-    resolution: {integrity: sha512-TzUrnjODqsU/EVDV8p9m5xngdkf7sBEgpNC58uYBX/vweBFI7MyWhZp1L9tvS3gYVoBhRoOi6gy4ZF+rMUBSEg==}
+  '@raviqqe/loscore@0.2.14':
+    resolution: {integrity: sha512-f+Fkg0Jnv/O1UqLDDYeqpkn+do45nXx8rgwEZiQywwPf+fO0ewiSw26ka0DejRZ6dXUi3G1pxYYX/n2W7qHUKw==}
     engines: {node: '>=24.6.0'}
 
   '@raviqqe/tsconfig@2.0.1':
@@ -2111,7 +2111,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@raviqqe/loscore@0.2.13': {}
+  '@raviqqe/loscore@0.2.14': {}
 
   '@raviqqe/tsconfig@2.0.1':
     dependencies:
