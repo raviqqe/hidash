@@ -7,6 +7,9 @@
   "publishConfig": {
     "provenance": true
   },
+  "engines": {
+    "node": ">=24.6.0"
+  },
   "type": "module",
   "exports": {
     "./*.js": {
