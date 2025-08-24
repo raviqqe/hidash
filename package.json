@@ -22,9 +22,7 @@
     }
   },
   "scripts": {
-    "build": "npm run build:tsc && npm run build:esbuild",
-    "build:esbuild": "esbuild --minify --format=esm --sourcemap --outdir=dist $(git ls-files src)",
-    "build:tsc": "tsc --emitDeclarationOnly",
+    "build": "rslib build",
     "lint": "eslint src",
     "test": "vitest --coverage"
   },
@@ -34,6 +32,7 @@
   "devDependencies": {
     "@raviqqe/eslint-config": "^5.0.0",
     "@raviqqe/tsconfig": "^2.0.1",
+    "@rslib/core": "^0.12.2",
     "@vitest/coverage-v8": "^3.2.4",
     "esbuild": "^0.25.9",
     "eslint": "^9.34.0",
