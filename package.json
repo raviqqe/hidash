@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "build": "tsc && rslib build",
+    "build": "rslib build",
     "lint": "eslint src",
     "test": "vitest --coverage"
   },
