@@ -12,17 +12,13 @@
   },
   "type": "module",
   "exports": {
-    "./*.js": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
-    },
     "./*": {
       "types": "./dist/*.d.ts",
       "default": "./dist/*.js"
     }
   },
   "scripts": {
-    "build": "rslib build",
+    "build": "tsc && rslib build",
     "lint": "eslint src",
     "test": "vitest --coverage"
   },

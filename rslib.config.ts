@@ -12,8 +12,9 @@ export default defineConfig({
   ],
   source: {
     entry: {
-      async: "./src/async.ts",
-      index: "./src/index.ts",
+      csv: "./src/csv.ts",
+      json: "./src/json.ts",
+      string: "./src/string.ts"
     },
   },
 });
