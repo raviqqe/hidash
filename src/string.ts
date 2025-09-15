@@ -1,4 +1,4 @@
-export const parseLines = async function*(
+export const parseLines = async function* (
   iterable: AsyncIterable<string>,
 ): AsyncIterable<string> {
   let line = "";
@@ -19,7 +19,7 @@ export const parseLines = async function*(
     }
   }
 
-if (line) {
-  yield line;
-}
+  if (line) {
+    yield line;
+  }
 };
