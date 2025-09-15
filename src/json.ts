@@ -8,4 +8,4 @@ export const parseLines = (
 
 export const stringifyLines = (
   values: AsyncIterable<unknown>,
-): AsyncIterable<string> => map(values, (json) => JSON.stringify(json) + "\n");
+): AsyncIterable<string> => map(values, (json) => `${JSON.stringify(json)}\n`);
