@@ -1,11 +1,10 @@
-import { toArray } from "@raviqqe/loscore/async";
 import { describe, expect, it } from "vitest";
 import { parseLines } from "./string.js";
 
 describe(parseLines.name, () => {
   it("parses a line", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parseLines(
           (async function* () {
             yield "a\n";
@@ -17,7 +16,7 @@ describe(parseLines.name, () => {
 
   it("parses lines", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parseLines(
           (async function* () {
             yield "a\n";
@@ -30,7 +29,7 @@ describe(parseLines.name, () => {
 
   it("parses a line without a trailing newline", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parseLines(
           (async function* () {
             yield "a";
@@ -42,7 +41,7 @@ describe(parseLines.name, () => {
 
   it("parses lines without a trailing newline", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parseLines(
           (async function* () {
             yield "a\n";
@@ -55,7 +54,7 @@ describe(parseLines.name, () => {
 
   it("parses broken lines", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parseLines(
           (async function* () {
             yield "a";

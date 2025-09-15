@@ -14,7 +14,7 @@ export default defineConfig({
     entry: {
       csv: "./src/csv.ts",
       json: "./src/json.ts",
-      string: "./src/string.ts"
+      string: "./src/string.ts",
     },
   },
 });

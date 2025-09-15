@@ -1,11 +1,10 @@
-import { toArray } from "@raviqqe/loscore/async";
 import { describe, expect, it } from "vitest";
 import { parse, stringify } from "./csv.js";
 
 describe(parse.name, () => {
   it("parses nothing", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parse(
           (async function* () {
             yield "";
@@ -17,7 +16,7 @@ describe(parse.name, () => {
 
   it("parses a row with a cell", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parse(
           (async function* () {
             yield "foo\n";
@@ -29,7 +28,7 @@ describe(parse.name, () => {
 
   it("parses a row with cells", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parse(
           (async function* () {
             yield "foo,42\n";
@@ -41,7 +40,7 @@ describe(parse.name, () => {
 
   it("parses rows", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parse(
           (async function* () {
             yield "foo,1\n";
@@ -57,7 +56,7 @@ describe(parse.name, () => {
 
   it("parses a row without a trailing newline", async () => {
     expect(
-      await toArray(
+      await Array.fromAsync(
         parse(
           (async function* () {
             yield "foo";
@@ -72,7 +71,7 @@ describe(stringify.name, () => {
   it("stringifies rows", async () => {
     expect(
       (
-        await toArray(
+        await Array.fromAsync(
           stringify(
             parse(
               (async function* () {
