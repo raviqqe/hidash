@@ -1,6 +1,4 @@
-import { last } from "@raviqqe/loscore";
-
-export const parseLines = async function* (
+export const parseLines = async function*(
   iterable: AsyncIterable<string>,
 ): AsyncIterable<string> {
   let line = "";
@@ -8,14 +6,14 @@ export const parseLines = async function* (
   for await (const delta of iterable) {
     const [former = "", ...rest] = delta.split("\n");
 
-    if (typeof last(rest) === "string") {
+    if (typeof rest.at(-1) === "string") {
       yield line + former;
 
       for (const line of rest.slice(0, -1)) {
         yield line;
       }
 
-      line = last(rest) ?? "";
+      line = rest.at(-1) ?? "";
     } else {
       line += former;
     }
