@@ -31,7 +31,7 @@
     "@raviqqe/tsconfig": "^3.0.0",
     "@rslib/core": "^0.20.0",
     "@vitest/coverage-v8": "^4.0.1",
-    "esbuild": "^0.27.0",
+    "esbuild": "^0.28.0",
     "typescript": "^6.0.2",
     "vitest": "^4.0.1"
   },
