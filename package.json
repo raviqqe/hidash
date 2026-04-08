@@ -29,7 +29,7 @@
     "@biomejs/biome": "^2.2.4",
     "@raviqqe/biome-config": "^2.0.18",
     "@raviqqe/tsconfig": "^3.0.0",
-    "@rslib/core": "^0.20.0",
+    "@rslib/core": "^0.21.0",
     "@vitest/coverage-v8": "^4.0.1",
     "esbuild": "^0.28.0",
     "typescript": "^6.0.2",
