@@ -20,7 +20,7 @@ importers:
         version: 2.0.27(@biomejs/biome@2.5.5)
       '@raviqqe/tsconfig':
         specifier: ^3.0.0
-        version: 3.0.1
+        version: 3.0.2
       '@rslib/core':
         specifier: ^0.23.0
         version: 0.23.2(core-js@3.47.0)(typescript@7.0.2)
@@ -526,8 +526,8 @@ packages:
     resolution: {integrity: sha512-lOJxKYn1pZqFsbKgJ7pKY/P5Dv+jgvuVUKbjYR70N3GbjHjWl+Q+K6kWY4/FQJakJd1cHTl2glL8IO+wIDU4OA==}
     engines: {node: '>=24.6.0'}
 
-  '@raviqqe/tsconfig@3.0.1':
-    resolution: {integrity: sha512-gz/7bBrBrqHIqAlaT0TXb8RaQOTCo272urCs89UlSRBPj13OwqHSw5ilhOWW+daLBoQT3ULku3Rahy+Nm9Cy5A==}
+  '@raviqqe/tsconfig@3.0.2':
+    resolution: {integrity: sha512-san+p1rO62JSKwb7F2hbjoY3EtPhC4qiQM9DNpE+pAIguQRlNurfVpm6KNlIuc+WY0e2cS3X7H2EMJ+PZaRtZw==}
     engines: {node: '>=25.8.0'}
 
   '@rollup/rollup-android-arm-eabi@4.62.2':
@@ -1053,8 +1053,8 @@ packages:
     resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
     engines: {node: '>=12'}
 
-  postcss@8.5.21:
-    resolution: {integrity: sha512-v4sDNP3fdNiWMfabO7OwOQdOX8TiQSztKyT1Wj0w+j7LDallJThJRBBBmzVGyYj0crMh7jlV4zepPkiNu9UwDQ==}
+  postcss@8.5.22:
+    resolution: {integrity: sha512-KBDEIpLrvpv16pp3K0Fw+UCoZfopFjjgeB+0tA/aaThfEE74kKDLrgg603YvOWJyg3+WYtyq3xYsQWsIyZlPqQ==}
     engines: {node: ^10 || ^12 || >=14}
 
   rollup@4.62.2:
@@ -1117,11 +1117,6 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
-
-  typescript@6.0.3:
-    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -1499,9 +1494,9 @@ snapshots:
 
   '@raviqqe/loscore@0.3.1': {}
 
-  '@raviqqe/tsconfig@3.0.1':
+  '@raviqqe/tsconfig@3.0.2':
     dependencies:
-      typescript: 6.0.3
+      typescript: 7.0.2
 
   '@rollup/rollup-android-arm-eabi@4.62.2':
     optional: true
@@ -1928,7 +1923,7 @@ snapshots:
 
   picomatch@4.0.5: {}
 
-  postcss@8.5.21:
+  postcss@8.5.22:
     dependencies:
       nanoid: 3.3.16
       picocolors: 1.1.1
@@ -1999,8 +1994,6 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  typescript@6.0.3: {}
-
   typescript@7.0.2:
     optionalDependencies:
       '@typescript/typescript-aix-ppc64': 7.0.2
@@ -2029,7 +2022,7 @@ snapshots:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.5)
       picomatch: 4.0.5
-      postcss: 8.5.21
+      postcss: 8.5.22
       rollup: 4.62.2
       tinyglobby: 0.2.17
     optionalDependencies:
