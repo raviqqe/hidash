@@ -23,14 +23,14 @@
     "@raviqqe/loscore": "^0.3.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.6.4",
+    "@biomejs/biome": "^2.6.9",
     "@raviqqe/biome-config": "^2.0.29",
-    "@raviqqe/tsconfig": "^3.0.0",
-    "@rslib/core": "^1.0.1",
-    "@vitest/coverage-v8": "^5.0.0",
-    "esbuild": "^0.28.0",
+    "@raviqqe/tsconfig": "^3.0.5",
+    "@rslib/core": "^1.1.0",
+    "@vitest/coverage-v8": "^5.1.2",
+    "esbuild": "^0.28.2",
     "typescript": "^7.0.2",
-    "vitest": "^5.0.0"
+    "vitest": "^5.1.2"
   },
   "engines": {
     "node": "^26.13.1"
